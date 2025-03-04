@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 // import './App.css'
 
 import Dice from './Dice/dice.jsx'
+import QBox from './QuestionBox/QBox.jsx'
+import MultiQBox from './QuestionBox/MultiQBox.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,7 +33,9 @@ function App() {
     //     Click on the Vite and React logos to learn more
     //   </p>
     // </>
-    <Dice />
+    // <Dice />
+    // <QBox />
+    <MultiQBox/>
   )
 }
 

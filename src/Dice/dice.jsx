@@ -5,17 +5,29 @@ function Dice(props) {
     const diceRef = useRef(null);
     const [rotation, setRotation] = useState("");
     const [animationTime, setAnimationTime] = useState("")
-
+    
     async function randomDice() {
         const random = Math.floor(Math.random() * 6) + 1;
         await rollDice(random);
-    
         console.log(random);
-        
-        for (let i = 0; i < random; i++) {
+    
+        for (let i = 1; i <= random; i++) {
             setTimeout(() => {
-                props.setCurrentLocation(prev => prev + 1);
-            }, 1000 * (i + 1)); // Mỗi lần +1 giây
+                props.setCurrentIndex(prevIndex => {
+                    const nextIndex = prevIndex + 1;
+                    if (nextIndex < props.QuestionPosition.length) {
+                        props.setCurrentLocation(props.QuestionPosition[nextIndex]);
+                    }
+                    return nextIndex;
+                });
+        
+                // Khi chạy lần cuối cùng, mở modal
+                if (i === random) {
+                    setTimeout(() => {
+                        props.setIsQuesttionModalOpen(true);
+                    }, 1000); // Đợi chút trước khi mở modal
+                }
+            }, 1000 * i);
         }
     }
 

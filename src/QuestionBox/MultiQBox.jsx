@@ -60,7 +60,14 @@ function MultiQBox(props) {
                         // border: "1px solid black",
                     }}
                 >
-                    {questIndexes.includes(index) && <QBox index={index} currentLocation={props.currentLocation}/>}
+                    {questIndexes.includes(index) &&
+                        <QBox
+                            index={index}
+                            currentLocation={props.currentLocation}
+                            setIsQuesttionModalOpen={props.setIsQuesttionModalOpen}
+                            isQuesttionModalOpen={props.isQuesttionModalOpen}
+                        />}
+                    
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}
                     {index == 12 && <img src="/karaken.png" alt="" width={130} />}
                     {index == 22 && <img src="/island.png" alt="" width={150} />}

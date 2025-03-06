@@ -9,6 +9,9 @@ function QBox(props) {
     const [num3, setNum3] = useState(0)
     const [sign, setSign] = useState(0)
 
+    const [answer, setAnswer] = useState(0)
+    const [feedback, setFeedback] = useState("");
+
     const x = Math.floor(Math.random() * 50) - 25;
     const y = Math.floor(Math.random() * 40) - 20;
 
@@ -30,6 +33,15 @@ function QBox(props) {
     useEffect(() => {
         randomQuestion()
     }, [])
+
+    function AnswerQuestion(input) {
+        const isCorrect = sign ? input == num1 * num2 : input == num2;
+        setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
+    }
+
+    function handleChange(event) {
+        setAnswer(event.target.value)
+    }
 
     return (
         <div
@@ -69,20 +81,54 @@ function QBox(props) {
                         flexDirection: "column",
                         fontSize: 20,
                     }}>
+
                     <h1>Bạn phải trả lời câu hỏi sau</h1>
+
                     <h2>{sign ? num1 + " x " + num2 : num3 + " / " + num1}</h2>
-                    <input type="number" placeholder="Câu trả lời của bạn là?" style={{ fontSize: "20px", padding: "5px" }} />
-                    <button
-                        onClick={() => props.setIsQuesttionModalOpen(false)}
+
+                    <input
+                        onChange={handleChange}
+                        value={answer}
+                        type="number"
+                        placeholder="Câu trả lời của bạn là?"
                         style={{
-                            fontSize: 20,
-                            padding: 10,
-                            borderRadius: 10,
-                            backgroundColor: "green"
+                            fontSize: "20px",
+                            padding: "5px"
                         }}
-                    >
-                        Tiếp tục
-                    </button>
+                    />
+
+                    {!feedback &&
+                        <button
+                            onClick={() => AnswerQuestion(answer)}
+                            style={{
+                                fontSize: 20,
+                                padding: 10,
+                                borderRadius: 10,
+                                backgroundColor: "green"
+                            }}
+                        >
+                            xác nhận
+                        </button>
+                    }
+
+
+                    {feedback && <div>{feedback}</div>}
+
+
+                    {feedback &&
+                        <button
+                            onClick={() => props.setIsQuesttionModalOpen(false)}
+                            style={{
+                                fontSize: 20,
+                                padding: 10,
+                                borderRadius: 10,
+                                backgroundColor: "green"
+                            }}
+                        >
+                            Tiếp tục
+                        </button>
+                    }
+
                 </div>
             </Modal>
         </div>

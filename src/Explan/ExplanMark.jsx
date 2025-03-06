@@ -1,11 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 
-function ExplanMark(){
-    return(
-        <div style={{backgroundColor: "green", borderRadius: "50%"}}>
-            <img src="exclamation.png" alt="" width={100}/>
+Modal.setAppElement("#root");
+
+
+function ExplanMark(props) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div>
+            <button onClick={() => setIsOpen(true)}>
+                <img src="exclamation.png" alt="" width={100} />
+            </button>
+
+            <Modal
+                isOpen={isOpen}
+                onRequestClose={() => setIsOpen(false)}
+                style={{
+                    overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 1000 },
+                    content: { width: "60%", margin: "auto", padding: "20px" }
+                }}
+            >
+                <div 
+                style={{ 
+                    alignContent: "center",
+                     alignItems: "center", 
+                     justifyContent: "center", 
+                     display: "flex", 
+                     flexDirection: "column",
+                     fontSize: 20,
+                     }}>
+                    <h1>Trò chơi hướng đến kho báu</h1>
+                    <h2>Cách chơi</h2>
+                    <ul style={{padding:20}}>
+                        <li><p>Chơi theo nhóm</p></li>
+                        <li><p>Người chơi bắt đầu từ vị trí <b>xuất phát</b> khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm nhận được. Nếu đến hình <b>tam giác</b> thì đi tiếp tới ô theo đường mũi tên.</p></li>
+                        <li><p>Nêu kết quả của phép tính tại ô đi đến, nếu sai kết quả thì phải quay về ô xuất phát trước đó.</p></li>
+                        <li><p>Trò chơi kết thúc khi người chơi đến được <b>Kho báu</b></p></li>
+                    </ul>
+                    <button
+                        onClick={() => setIsOpen(false)}
+                        style={{
+                            fontSize: 20,
+                            padding: 10,
+                            borderRadius: 10,
+                            backgroundColor: "green"
+                        }}
+                    >
+                        Đóng
+                    </button>
+                </div>
+            </Modal>
         </div>
-    )
+    );
 }
 
 export default ExplanMark

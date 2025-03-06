@@ -1,47 +1,58 @@
 import React, { useRef, useState } from "react";
 import "./Dice.css";
 
-function Dice() {
+function Dice(props) {
     const diceRef = useRef(null);
     const [rotation, setRotation] = useState("");
     const [animationTime, setAnimationTime] = useState("")
 
-    const randomDice = () => {
+    async function randomDice() {
         const random = Math.floor(Math.random() * 6) + 1;
-        rollDice(random);
-    };
+        await rollDice(random);
+    
+        for (let i = 0; i < random; i++) {
+            setTimeout(() => {
+                props.setCurrentLocation(props.currentLocation + 1)
+                console.log(i)
+            }, 1000);
+        }
+    }
 
     const rollDice = (random) => {
-        setAnimationTime("rolling 4s")
+        return new Promise((resolve) => { // ✅ Bọc trong Promise
+            setAnimationTime("rolling 4s");
 
-        setTimeout(() => {
-            let transform = "";
+            setTimeout(() => {
+                let transform = "";
 
-            switch (random) {
-                case 1:
-                    transform = "rotateX(0deg) rotateY(0deg)";
-                    break;
-                case 6:
-                    transform = "rotateX(180deg) rotateY(0deg)";
-                    break;
-                case 2:
-                    transform = "rotateX(-90deg) rotateY(0deg)";
-                    break;
-                case 5:
-                    transform = "rotateX(90deg) rotateY(0deg)";
-                    break;
-                case 3:
-                    transform = "rotateX(0deg) rotateY(90deg)";
-                    break;
-                case 4:
-                    transform = "rotateX(0deg) rotateY(-90deg)";
-                    break;
-                default:
-                    break;
-            }
-            setAnimationTime("")
-            setRotation(transform);
-        }, 4050);
+                switch (random) {
+                    case 1:
+                        transform = "rotateX(0deg) rotateY(0deg)";
+                        break;
+                    case 6:
+                        transform = "rotateX(180deg) rotateY(0deg)";
+                        break;
+                    case 2:
+                        transform = "rotateX(-90deg) rotateY(0deg)";
+                        break;
+                    case 5:
+                        transform = "rotateX(90deg) rotateY(0deg)";
+                        break;
+                    case 3:
+                        transform = "rotateX(0deg) rotateY(90deg)";
+                        break;
+                    case 4:
+                        transform = "rotateX(0deg) rotateY(-90deg)";
+                        break;
+                    default:
+                        break;
+                }
+
+                setAnimationTime("");
+                setRotation(transform);
+                resolve(); // ✅ Giải quyết Promise sau khi hoàn tất
+            }, 4050);
+        });
     };
 
     return (

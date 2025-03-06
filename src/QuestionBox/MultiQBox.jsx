@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QBox from "./QBox";
 
-function MultiQBox() {
+function MultiQBox(props) {
     const rows = 7;
     const cols = 7;
     const cells = Array.from({ length: rows * cols });
@@ -60,7 +60,7 @@ function MultiQBox() {
                         // border: "1px solid black",
                     }}
                 >
-                    {questIndexes.includes(index) && <QBox index={index} />}
+                    {questIndexes.includes(index) && <QBox index={index} currentLocation={props.currentLocation}/>}
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}
                     {index == 12 && <img src="/karaken.png" alt="" width={150} />}
                     {index == 22 && <img src="/island.png" alt="" width={150} />}

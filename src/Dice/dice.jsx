@@ -10,16 +10,17 @@ function Dice(props) {
         const random = Math.floor(Math.random() * 6) + 1;
         await rollDice(random);
     
+        console.log(random);
+        
         for (let i = 0; i < random; i++) {
             setTimeout(() => {
-                props.setCurrentLocation(props.currentLocation + 1)
-                console.log(i)
-            }, 1000);
+                props.setCurrentLocation(prev => prev + 1);
+            }, 1000 * (i + 1)); // Mỗi lần +1 giây
         }
     }
 
     const rollDice = (random) => {
-        return new Promise((resolve) => { // ✅ Bọc trong Promise
+        return new Promise((resolve) => {
             setAnimationTime("rolling 4s");
 
             setTimeout(() => {

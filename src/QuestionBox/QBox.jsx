@@ -41,8 +41,9 @@ function QBox(props) {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                transform: (props.index === 13 || props.index === 21 || props.index === 41)
-                    ? `translate(${x}px, 0px)`
+                transform: (props.index === 13 || props.index === 41)
+                    ? `translate(30px, 0px)` 
+                    : props.index === 21 ? `translate(-30px, 0px)`
                     : `translate(0px, ${y}px)`
             }}>
             {sign ? num1 + " x " + num2 : num3 + " / " + num1}

@@ -1,15 +1,12 @@
 import React from "react";
 import MultiQBox from "../QuestionBox/MultiQBox";
+import Dice from "../Dice/dice";
 
-function MainGame(){
+function MainGame() {
     return (
-        <div>
-            {/* <img src="/private.png" alt="" width={200}/>
-            <img src="/treasure.png" alt="" width={200}/>
-            <img src="/karaken.png" alt="" width={200}/>
-            <img src="/island.png" alt="" width={200}/> */}
-
-            <MultiQBox/>
+        <div style={{display: "flex", justifyContent: "space-between"}}>
+            <Dice/>
+            <MultiQBox />
         </div>
     )
 }

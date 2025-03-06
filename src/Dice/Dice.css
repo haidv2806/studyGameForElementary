@@ -10,13 +10,13 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #b33951;
-}
+} */
 
 .container {
     display: grid;

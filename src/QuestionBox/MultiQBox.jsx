@@ -27,6 +27,16 @@ function MultiQBox() {
         // Phần tử cuối của hàng 6 (index 41)
         indexes.push(41);
 
+        const indexToRemove = [0, 42];
+        indexToRemove.sort((a, b) => b - a);
+
+        indexToRemove.forEach(idx => {
+            const indexInArray = indexes.indexOf(idx);
+            if (indexInArray !== -1) {
+                indexes.splice(indexInArray, 1);
+            }
+        });
+
         setQuestIndexes(indexes);
     }, []);
 
@@ -39,7 +49,7 @@ function MultiQBox() {
             }}
         >
             {cells.map((_, index) => (
-                <div key={index} 
+                <div key={index}
                     style={{
                         width: "100px",
                         height: "100px",
@@ -50,7 +60,11 @@ function MultiQBox() {
                         // border: "1px solid black",
                     }}
                 >
-                    {questIndexes.includes(index) && <QBox index = {index} />}
+                    {questIndexes.includes(index) && <QBox index={index} />}
+                    {index == 0 && <img src="/treasure.png" alt="" width={150} />}
+                    {index == 12 && <img src="/karaken.png" alt="" width={150} />}
+                    {index == 22 && <img src="/island.png" alt="" width={150} />}
+                    {index == 42 && <img src="/private.png" alt="" width={150} />}
                 </div>
             ))}
         </div>

@@ -44,7 +44,7 @@ function QBox(props) {
                                 : props.index === 21
                                     ? elementRef.current.offsetLeft - 30
                                     : elementRef.current.offsetLeft,
-                            y: elementRef.current.offsetTop + y
+                            y: elementRef.current.offsetTop + y - 10
                         }
                         : item
                 )

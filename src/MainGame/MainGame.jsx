@@ -18,6 +18,7 @@ function MainGame() {
     const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState(
         QuestionPosition.map(() => ({ x: 0, y: 0 }))
     );
+    console.log(currentIndex);
 
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
@@ -33,7 +34,7 @@ function MainGame() {
                         setIsQuesttionModalOpen={setIsQuesttionModalOpen}
                     />
                 </div>
-    
+
                 <MultiQBox
                     currentLocation={currentLocation}
                     setIsQuesttionModalOpen={setIsQuesttionModalOpen}
@@ -43,15 +44,18 @@ function MainGame() {
                     setListQusettionOffsetPosision={setListQusettionOffsetPosision}
                     QuestionPosition={QuestionPosition}
                 />
-    
+
                 <div>
                     <ExplanMark isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
                 </div>
             </div>
-    
+
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}
             <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
-                <MovingPrivate listQusettionOffsetPosision={listQusettionOffsetPosision} />
+                <MovingPrivate
+                    listQusettionOffsetPosision={listQusettionOffsetPosision}
+                    currentIndex={currentIndex}
+                />
             </div>
         </div>
     );

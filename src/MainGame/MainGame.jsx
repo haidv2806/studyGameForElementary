@@ -15,7 +15,9 @@ function MainGame() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
     const [numHeart, setNumHeart] = useState([1, 1, 1])
-    const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState([])
+    const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState(
+        QuestionPosition.map(() => ({ x: 0, y: 0 }))
+    );
 
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
@@ -39,6 +41,7 @@ function MainGame() {
                     setNumHeart={setNumHeart}
                     setCurrentIndex={setCurrentIndex}
                     setListQusettionOffsetPosision={setListQusettionOffsetPosision}
+                    QuestionPosition={QuestionPosition}
                 />
     
                 <div>

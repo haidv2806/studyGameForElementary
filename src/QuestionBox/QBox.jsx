@@ -35,16 +35,22 @@ function QBox(props) {
 
     useEffect(() => {
         if (elementRef.current) {
-            props.setListQusettionOffsetPosision(prev => [
-                ...prev,
-                {
-                    x: props.index === 13 || props.index === 41 ? elementRef.current.offsetLeft + 30 
-                        : props.index === 21 ? elementRef.current.offsetLeft - 30 : elementRef.current.offsetLeft,
-                    y: elementRef.current.offsetTop + y
-                }
-            ]);
+            props.setListQusettionOffsetPosision(prev => 
+                prev.map((item, i) =>
+                    props.QuestionPosition[i] === props.index
+                        ? {
+                            x: props.index === 13 || props.index === 41
+                                ? elementRef.current.offsetLeft + 30
+                                : props.index === 21
+                                    ? elementRef.current.offsetLeft - 30
+                                    : elementRef.current.offsetLeft,
+                            y: elementRef.current.offsetTop + y
+                        }
+                        : item
+                )
+            );
         }
-    }, []);
+    }, [props.index]);
 
     function AnswerQuestion(input) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;

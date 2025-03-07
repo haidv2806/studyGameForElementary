@@ -66,6 +66,7 @@ function MultiQBox(props) {
                             currentLocation={props.currentLocation}
                             setIsQuesttionModalOpen={props.setIsQuesttionModalOpen}
                             isQuesttionModalOpen={props.isQuesttionModalOpen}
+                            setNumHeart={props.setNumHeart}
                         />}
                     
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}

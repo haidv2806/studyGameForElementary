@@ -36,6 +36,16 @@ function QBox(props) {
 
     function AnswerQuestion(input) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;
+    
+        if (!isCorrect) {
+            props.setNumHeart(prevHearts => {
+                const newHearts = [...prevHearts];
+                const index = newHearts.indexOf(1); // Tìm vị trí đầu tiên có 1
+                if (index !== -1) newHearts[index] = 0; // Chuyển thành 0 nếu tìm thấy
+                return newHearts;
+            });
+        }
+    
         setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
     }
 

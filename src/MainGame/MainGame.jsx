@@ -2,19 +2,26 @@ import React, { useState, useEffect } from "react";
 import MultiQBox from "../QuestionBox/MultiQBox";
 import Dice from "../Dice/dice";
 import ExplanMark from "../Explan/ExplanMark";
+import MultiHeart from "../Heart/MultiHreart";
 
 function MainGame() {
-    
+
     const QuestionPosition = [43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
     const [currentLocation, setCurrentLocation] = useState(QuestionPosition[0])
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
+    const [numHeart, setNumHeart] = useState([1, 1, 1])
+    console.log(numHeart);
+    
 
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh" }}>
                 <div>
+                    <MultiHeart
+                        numHeart={numHeart}
+                    />
                     <Dice
                         currentLocation={currentLocation}
                         setCurrentLocation={setCurrentLocation}
@@ -29,6 +36,7 @@ function MainGame() {
                     currentLocation={currentLocation}
                     setIsQuesttionModalOpen={setIsQuesttionModalOpen}
                     isQuesttionModalOpen={isQuesttionModalOpen}
+                    setNumHeart={setNumHeart}
                 />
 
                 <div>

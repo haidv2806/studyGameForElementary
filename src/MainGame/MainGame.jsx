@@ -5,6 +5,7 @@ import ExplanMark from "../Explan/ExplanMark";
 import MultiHeart from "../Heart/MultiHreart";
 import SGVPath from "../Wave/SGVPath";
 import MovingPrivate from "../Animation/MovingPrivate";
+import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
 
 
 function MainGame() {
@@ -59,7 +60,7 @@ function MainGame() {
             </div>
 
             <SGVPath positions={listQusettionOffsetPosision} />
-
+            {/* <WaveAnimationSVG listQusettionOffsetPosision={listQusettionOffsetPosision}/> */}
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}
             <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
                 <MovingPrivate

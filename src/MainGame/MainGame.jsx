@@ -6,16 +6,19 @@ import MultiHeart from "../Heart/MultiHreart";
 import SGVPath from "../Wave/SGVPath";
 import MovingPrivate from "../Animation/MovingPrivate";
 import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
+import LossAlert from "../Alert/LossAlert";
+import WinAlert from "../Alert/WinAlert";
 
 
 function MainGame() {
-
     const QuestionPosition = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
     const [currentLocation, setCurrentLocation] = useState(QuestionPosition[0])
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
     const [numHeart, setNumHeart] = useState([1, 1, 1])
+    const [isLossAlertOpen, setLossIsAlertOpen] = useState(false);
+    const [isWinAlertOpen, setWinIsAlertOpen] = useState(false);
     const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState(
         QuestionPosition.map(() => ({ x: 0, y: 0 }))
     );
@@ -52,6 +55,8 @@ function MainGame() {
                     setCurrentIndex={setCurrentIndex}
                     setListQusettionOffsetPosision={setListQusettionOffsetPosision}
                     QuestionPosition={QuestionPosition}
+                    setLossIsAlertOpen={setLossIsAlertOpen}
+                    setWinIsAlertOpen={setWinIsAlertOpen}
                 />
 
                 <div style={{ alignSelf: "flex-start" }}>
@@ -67,6 +72,8 @@ function MainGame() {
                     listQusettionOffsetPosision={listQusettionOffsetPosision}
                     currentIndex={currentIndex}
                 />
+                <LossAlert isOpen={isLossAlertOpen} onClose={() => setLossIsAlertOpen(false)} />
+                <WinAlert isOpen={isWinAlertOpen} onClose={() => setWinIsAlertOpen(false)} />
             </div>
         </div>
     );

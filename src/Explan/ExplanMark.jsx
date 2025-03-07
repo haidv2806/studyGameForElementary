@@ -17,22 +17,34 @@ function ExplanMark(props) {
                 isOpen={isOpen}
                 onRequestClose={() => setIsOpen(false)}
                 style={{
-                    overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 1000 },
-                    content: { width: "60%", margin: "auto", padding: "20px" }
+                    overlay: { 
+                        backgroundColor: "rgba(0, 0, 0, 0.2)", 
+                        backdropFilter: "blur(10px)", 
+                        zIndex: 1000 
+                    },
+                    content: { 
+                        width: "60%", 
+                        height: "fit-content", // Chiều cao vừa với nội dung
+                        margin: "auto", 
+                        padding: "20px", 
+                        background: "rgba(255, 255, 255, 0.3)", 
+                        borderRadius: "10px",
+                        border: "none"
+                    }
                 }}
             >
-                <div 
-                style={{ 
-                    alignContent: "center",
-                     alignItems: "center", 
-                     justifyContent: "center", 
-                     display: "flex", 
-                     flexDirection: "column",
-                     fontSize: 20,
-                     }}>
+                <div
+                    style={{
+                        alignContent: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        fontSize: 20,
+                    }}>
                     <h1>Trò chơi hướng đến kho báu</h1>
                     <h2>Cách chơi</h2>
-                    <ul style={{padding:20}}>
+                    <ul style={{ padding: 20 }}>
                         <li><p>Chơi theo nhóm</p></li>
                         <li><p>Người chơi bắt đầu từ vị trí <b>xuất phát</b> khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm nhận được. Nếu đến hình <b>tam giác</b> thì đi tiếp tới ô theo đường mũi tên.</p></li>
                         <li><p>Nêu kết quả của phép tính tại ô đi đến, nếu sai kết quả thì phải quay về ô xuất phát trước đó.</p></li>

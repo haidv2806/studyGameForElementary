@@ -54,16 +54,28 @@ function QBox(props) {
 
     function AnswerQuestion(input) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;
-
+    
         if (!isCorrect) {
             props.setNumHeart(prevHearts => {
                 const newHearts = [...prevHearts];
-                const index = newHearts.indexOf(1); // Tìm vị trí đầu tiên có 1
-                if (index !== -1) newHearts[index] = 0; // Chuyển thành 0 nếu tìm thấy
+                const index = newHearts.indexOf(1);
+                if (index !== -1) {
+                    newHearts[index] = 0;
+                }
+    
+                // Kiểm tra nếu không còn số 1 nào thì hiển thị alert
+                if (!newHearts.includes(1)) {
+                    props.setLossIsAlertOpen(true)
+                }
+    
                 return newHearts;
             });
         }
 
+        if (isCorrect && props.index == 1) {
+            props.setWinIsAlertOpen(true)
+        }
+    
         setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
     }
 
@@ -98,8 +110,20 @@ function QBox(props) {
                 isOpen={props.index == props.currentLocation && props.isQuesttionModalOpen}
                 onRequestClose={() => props.setIsQuesttionModalOpen(false)}
                 style={{
-                    overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 1000 },
-                    content: { width: "60%", margin: "auto", padding: "20px" }
+                    overlay: { 
+                        backgroundColor: "rgba(0, 0, 0, 0.2)", 
+                        backdropFilter: "blur(10px)", 
+                        zIndex: 1000 
+                    },
+                    content: { 
+                        width: "60%", 
+                        height: "fit-content", // Chiều cao vừa với nội dung
+                        margin: "auto", 
+                        padding: "20px", 
+                        background: "rgba(255, 255, 255, 0.3)", 
+                        borderRadius: "10px",
+                        border: "none"
+                    }
                 }}
             >
                 <div

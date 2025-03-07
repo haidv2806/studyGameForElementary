@@ -69,6 +69,8 @@ function MultiQBox(props) {
                             setNumHeart={props.setNumHeart}
                             setListQusettionOffsetPosision={props.setListQusettionOffsetPosision}
                             QuestionPosition={props.QuestionPosition}
+                            setLossIsAlertOpen={props.setLossIsAlertOpen}
+                            setWinIsAlertOpen={props.setWinIsAlertOpen}
                         />}
                     
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}

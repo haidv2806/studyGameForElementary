@@ -3,7 +3,7 @@ import MultiQBox from "../QuestionBox/MultiQBox";
 import Dice from "../Dice/dice";
 import ExplanMark from "../Explan/ExplanMark";
 import MultiHeart from "../Heart/MultiHreart";
-import SVGWave from "../Wave/SVGWave";
+import SGVPath from "../Wave/SGVPath";
 import MovingPrivate from "../Animation/MovingPrivate";
 
 
@@ -20,10 +20,18 @@ function MainGame() {
     );
     console.log(currentIndex);
 
+    useEffect(() => {
+        document.body.style.background = "rgba(0, 119, 255, 0.8)";
+        return () => {
+            document.body.style.background = "";
+        };
+    }, []);
+
+
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh" }}>
-                <div>
+                <div style={{ alignSelf: "flex-start" }}>
                     <MultiHeart numHeart={numHeart} />
                     <Dice
                         currentLocation={currentLocation}
@@ -45,10 +53,12 @@ function MainGame() {
                     QuestionPosition={QuestionPosition}
                 />
 
-                <div>
+                <div style={{ alignSelf: "flex-start" }}>
                     <ExplanMark isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
                 </div>
             </div>
+
+            <SGVPath positions={listQusettionOffsetPosision} />
 
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}
             <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>

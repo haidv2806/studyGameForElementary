@@ -9,7 +9,7 @@ function QBox(props) {
     const [num3, setNum3] = useState(0)
     const [sign, setSign] = useState(0)
 
-    const [answer, setAnswer] = useState(0)
+    const [answer, setAnswer] = useState()
     const [feedback, setFeedback] = useState("");
 
     const x = Math.floor(Math.random() * 50) - 25;
@@ -72,10 +72,11 @@ function QBox(props) {
                     : props.index === 21 ? `translate(-30px, 0px)`
                         : `translate(0px, ${y}px)`
             }}>
+
             {sign ? num1 + " x " + num2 : num3 + " / " + num1}
 
             <Modal
-                isOpen={props.isQuesttionModalOpen}
+                isOpen={props.index == props.currentLocation && props.isQuesttionModalOpen}
                 onRequestClose={() => props.setIsQuesttionModalOpen(false)}
                 style={{
                     overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 1000 },
@@ -127,7 +128,11 @@ function QBox(props) {
 
                     {feedback &&
                         <button
-                            onClick={() => props.setIsQuesttionModalOpen(false)}
+                            onClick={() => (
+                                props.setIsQuesttionModalOpen(false),
+                                setFeedback(""),
+                                setAnswer()
+                            )}
                             style={{
                                 fontSize: 20,
                                 padding: 10,

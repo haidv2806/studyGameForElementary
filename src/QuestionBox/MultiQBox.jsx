@@ -71,6 +71,9 @@ function MultiQBox(props) {
                             QuestionPosition={props.QuestionPosition}
                             setLossIsAlertOpen={props.setLossIsAlertOpen}
                             setWinIsAlertOpen={props.setWinIsAlertOpen}
+                            currentRollNum={props.currentRollNum}
+                            setCurrentLocation={props.setCurrentLocation}
+                            setCurrentIndex={props.setCurrentIndex}
                         />}
                     
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}

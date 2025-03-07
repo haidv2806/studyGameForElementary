@@ -8,8 +8,8 @@ function Dice(props) {
     
     async function randomDice() {
         const random = Math.floor(Math.random() * 6) + 1;
+        props.setCurrentRollNum(random)
         await rollDice(random);
-        console.log(random);
     
         for (let i = 1; i <= random; i++) {
             setTimeout(() => {

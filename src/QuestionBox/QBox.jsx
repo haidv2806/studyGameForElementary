@@ -56,6 +56,20 @@ function QBox(props) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;
     
         if (!isCorrect) {
+            console.log(props.currentRollNum);
+            
+            for (let i = 1; i <= props.currentRollNum; i++) {
+                setTimeout(() => {
+                    props.setCurrentIndex(prevIndex => {
+                        const nextIndex = prevIndex - 1;
+                        if (nextIndex < props.QuestionPosition.length) {
+                            props.setCurrentLocation(props.QuestionPosition[nextIndex]);
+                        }
+                        return nextIndex;
+                    });
+                }, 1000 * i);
+            }
+
             props.setNumHeart(prevHearts => {
                 const newHearts = [...prevHearts];
                 const index = newHearts.indexOf(1);

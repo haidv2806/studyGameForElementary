@@ -13,16 +13,19 @@ import WinAlert from "../Alert/WinAlert";
 function MainGame() {
     const QuestionPosition = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
     const [currentLocation, setCurrentLocation] = useState(QuestionPosition[0])
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [currentRollNum, setCurrentRollNum] = useState(0)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
     const [numHeart, setNumHeart] = useState([1, 1, 1])
-    const [isLossAlertOpen, setLossIsAlertOpen] = useState(false);
-    const [isWinAlertOpen, setWinIsAlertOpen] = useState(false);
+    const [isLossAlertOpen, setLossIsAlertOpen] = useState(false)
+    const [isWinAlertOpen, setWinIsAlertOpen] = useState(false)
     const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState(
         QuestionPosition.map(() => ({ x: 0, y: 0 }))
     );
+
     console.log(currentIndex);
+    
 
     useEffect(() => {
         document.body.style.background = "rgba(0, 119, 255, 0.8)";
@@ -44,6 +47,7 @@ function MainGame() {
                         setCurrentIndex={setCurrentIndex}
                         currentIndex={currentIndex}
                         setIsQuesttionModalOpen={setIsQuesttionModalOpen}
+                        setCurrentRollNum={setCurrentRollNum}
                     />
                 </div>
 
@@ -57,6 +61,8 @@ function MainGame() {
                     QuestionPosition={QuestionPosition}
                     setLossIsAlertOpen={setLossIsAlertOpen}
                     setWinIsAlertOpen={setWinIsAlertOpen}
+                    currentRollNum={currentRollNum}
+                    setCurrentLocation={setCurrentLocation}
                 />
 
                 <div style={{ alignSelf: "flex-start" }}>

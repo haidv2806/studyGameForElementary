@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -10,6 +10,7 @@ function QBox(props) {
     const [sign, setSign] = useState(0)
     const [answer, setAnswer] = useState()
     const [feedback, setFeedback] = useState("");
+    const elementRef = useRef(null);
 
     const [y, setY] = useState(Math.floor(Math.random() * 40) - 20)
 
@@ -32,9 +33,22 @@ function QBox(props) {
         randomQuestion()
     }, [])
 
+    useEffect(() => {
+        if (elementRef.current) {
+            props.setListQusettionOffsetPosision(prev => [
+                ...prev,
+                {
+                    x: props.index === 13 || props.index === 41 ? elementRef.current.offsetLeft + 30 
+                        : props.index === 21 ? elementRef.current.offsetLeft - 30 : elementRef.current.offsetLeft,
+                    y: elementRef.current.offsetTop + y
+                }
+            ]);
+        }
+    }, []);
+
     function AnswerQuestion(input) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;
-    
+
         if (!isCorrect) {
             props.setNumHeart(prevHearts => {
                 const newHearts = [...prevHearts];
@@ -43,7 +57,7 @@ function QBox(props) {
                 return newHearts;
             });
         }
-    
+
         setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
     }
 
@@ -53,6 +67,7 @@ function QBox(props) {
 
     return (
         <div
+            ref={elementRef}
             style={{
                 padding: 10,
                 paddingLeft: 15,

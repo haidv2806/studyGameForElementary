@@ -3,6 +3,9 @@ import MultiQBox from "../QuestionBox/MultiQBox";
 import Dice from "../Dice/dice";
 import ExplanMark from "../Explan/ExplanMark";
 import MultiHeart from "../Heart/MultiHreart";
+import SVGWave from "../Wave/SVGWave";
+import MovingPrivate from "../Animation/MovingPrivate";
+
 
 function MainGame() {
 
@@ -12,14 +15,13 @@ function MainGame() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
     const [numHeart, setNumHeart] = useState([1, 1, 1])
+    const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState([])
 
     return (
-        <div>
+        <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh" }}>
                 <div>
-                    <MultiHeart
-                        numHeart={numHeart}
-                    />
+                    <MultiHeart numHeart={numHeart} />
                     <Dice
                         currentLocation={currentLocation}
                         setCurrentLocation={setCurrentLocation}
@@ -29,24 +31,27 @@ function MainGame() {
                         setIsQuesttionModalOpen={setIsQuesttionModalOpen}
                     />
                 </div>
-
+    
                 <MultiQBox
                     currentLocation={currentLocation}
                     setIsQuesttionModalOpen={setIsQuesttionModalOpen}
                     isQuesttionModalOpen={isQuesttionModalOpen}
                     setNumHeart={setNumHeart}
                     setCurrentIndex={setCurrentIndex}
+                    setListQusettionOffsetPosision={setListQusettionOffsetPosision}
                 />
-
+    
                 <div>
-                    <ExplanMark
-                        isModalOpen={isModalOpen}
-                        setIsModalOpen={setIsModalOpen}
-                    />
+                    <ExplanMark isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
                 </div>
             </div>
+    
+            {/* Đảm bảo MovingPrivate nằm trên tất cả */}
+            <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
+                <MovingPrivate listQusettionOffsetPosision={listQusettionOffsetPosision} />
+            </div>
         </div>
-    )
+    );
 }
 
 export default MainGame

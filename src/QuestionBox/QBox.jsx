@@ -8,12 +8,10 @@ function QBox(props) {
     const [num2, setNum2] = useState(0)
     const [num3, setNum3] = useState(0)
     const [sign, setSign] = useState(0)
-
     const [answer, setAnswer] = useState()
     const [feedback, setFeedback] = useState("");
 
-    const x = Math.floor(Math.random() * 50) - 25;
-    const y = Math.floor(Math.random() * 40) - 20;
+    const [y, setY] = useState(Math.floor(Math.random() * 40) - 20)
 
     function randomQuestion() {
         const random1 = Math.floor(Math.random() * 9) + 1;

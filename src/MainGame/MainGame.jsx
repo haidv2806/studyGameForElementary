@@ -12,8 +12,6 @@ function MainGame() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
     const [numHeart, setNumHeart] = useState([1, 1, 1])
-    // console.log(numHeart);
-    
 
     return (
         <div>
@@ -38,7 +36,6 @@ function MainGame() {
                     isQuesttionModalOpen={isQuesttionModalOpen}
                     setNumHeart={setNumHeart}
                     setCurrentIndex={setCurrentIndex}
-                    setCurrentLocation={setCurrentLocation}
                 />
 
                 <div>

@@ -74,6 +74,7 @@ function MultiQBox(props) {
                             currentRollNum={props.currentRollNum}
                             setCurrentLocation={props.setCurrentLocation}
                             setCurrentIndex={props.setCurrentIndex}
+                            setIsPlaying={props.setIsPlaying}
                         />}
                     
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}

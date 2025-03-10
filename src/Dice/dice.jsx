@@ -7,6 +7,7 @@ function Dice(props) {
     const [animationTime, setAnimationTime] = useState("")
     
     async function randomDice() {
+        props.setIsPlaying(true)
         const random = Math.floor(Math.random() * 6) + 1;
         props.setCurrentRollNum(random)
         await rollDice(random);
@@ -79,7 +80,7 @@ function Dice(props) {
                 <div className={"face left"}></div>
             </div>
 
-            <button className="roll" onClick={randomDice}>
+            <button className="roll" onClick={() => !props.isPlaying && randomDice()}>
                 Roll Dice
             </button>
         </div>

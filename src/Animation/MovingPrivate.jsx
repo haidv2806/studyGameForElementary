@@ -12,8 +12,8 @@ function MovingPrivate({ listQusettionOffsetPosision, currentIndex }) {
             alt="Moving Object"
             style={{ width: "70px", height: "70px", position: "absolute" }}
             animate={{
-                x: listQusettionOffsetPosision[currentIndex]?.x || 400, 
-                y: listQusettionOffsetPosision[currentIndex]?.y || 650
+                x: listQusettionOffsetPosision[currentIndex]?.x || 0, 
+                y: listQusettionOffsetPosision[currentIndex]?.y || window.innerHeight
             }}
             transition={{ duration: 1, ease: "linear" }} // Chuyển động trong 1s
         />

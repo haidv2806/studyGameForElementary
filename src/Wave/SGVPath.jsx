@@ -25,7 +25,7 @@ function SGVPath({ positions }) {
                 d={pathData}
                 fill="none"
                 stroke="white"
-                strokeWidth="3"
+                strokeWidth="5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeDasharray="5,10,3,8"

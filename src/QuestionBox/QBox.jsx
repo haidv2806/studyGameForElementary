@@ -91,6 +91,8 @@ function QBox(props) {
         }
     
         setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
+
+        props.setIsPlaying(false)
     }
 
     function handleChange(event) {
@@ -122,7 +124,7 @@ function QBox(props) {
 
             <Modal
                 isOpen={props.index == props.currentLocation && props.isQuesttionModalOpen}
-                onRequestClose={() => props.setIsQuesttionModalOpen(false)}
+                // onRequestClose={() => props.setIsQuesttionModalOpen(false)}
                 style={{
                     overlay: { 
                         backgroundColor: "rgba(0, 0, 0, 0.2)", 

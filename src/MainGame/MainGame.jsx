@@ -4,6 +4,7 @@ import Dice from "../Dice/dice";
 import ExplanMark from "../Explan/ExplanMark";
 import MultiHeart from "../Heart/MultiHreart";
 import SGVPath from "../Wave/SGVPath";
+import SGVPathArrow from "../Wave/SGVPathArrow";
 import MovingPrivate from "../Animation/MovingPrivate";
 import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
 import LossAlert from "../Alert/LossAlert";
@@ -20,11 +21,14 @@ function MainGame() {
     const [numHeart, setNumHeart] = useState([1, 1, 1])
     const [isLossAlertOpen, setLossIsAlertOpen] = useState(false)
     const [isWinAlertOpen, setWinIsAlertOpen] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false)
     const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState(
         QuestionPosition.map(() => ({ x: 0, y: 0 }))
     );
 
     console.log(currentIndex);
+    console.log(isPlaying);
+    
     
 
     useEffect(() => {
@@ -48,6 +52,8 @@ function MainGame() {
                         currentIndex={currentIndex}
                         setIsQuesttionModalOpen={setIsQuesttionModalOpen}
                         setCurrentRollNum={setCurrentRollNum}
+                        isPlaying={isPlaying}
+                        setIsPlaying={setIsPlaying}
                     />
                 </div>
 
@@ -63,6 +69,7 @@ function MainGame() {
                     setWinIsAlertOpen={setWinIsAlertOpen}
                     currentRollNum={currentRollNum}
                     setCurrentLocation={setCurrentLocation}
+                    setIsPlaying={setIsPlaying}
                 />
 
                 <div style={{ alignSelf: "flex-start" }}>
@@ -71,6 +78,7 @@ function MainGame() {
             </div>
 
             <SGVPath positions={listQusettionOffsetPosision} />
+            {/* <SGVPathArrow /> */}
             {/* <WaveAnimationSVG listQusettionOffsetPosision={listQusettionOffsetPosision}/> */}
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}
             <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>

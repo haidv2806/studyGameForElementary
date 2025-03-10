@@ -10,26 +10,21 @@ import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
 import LossAlert from "../Alert/LossAlert";
 import WinAlert from "../Alert/WinAlert";
 
-
 function MainGame() {
-    const QuestionPosition = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
-    const [currentLocation, setCurrentLocation] = useState(QuestionPosition[0])
+    const boardPositions = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
+    const [currentPlayerPosition, setCurrentPlayerPosition] = useState(boardPositions[0])
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [currentRollNum, setCurrentRollNum] = useState(0)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [isQuesttionModalOpen, setIsQuesttionModalOpen] = useState(false)
-    const [numHeart, setNumHeart] = useState([1, 1, 1])
+    const [diceValue, setDiceValue] = useState(0)
+    const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
+    const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
+    const [remainingLives, setRemainingLives] = useState([1, 1, 1])
     const [isLossAlertOpen, setLossIsAlertOpen] = useState(false)
     const [isWinAlertOpen, setWinIsAlertOpen] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [listQusettionOffsetPosision, setListQusettionOffsetPosision] = useState(
-        QuestionPosition.map(() => ({ x: 0, y: 0 }))
+    const [questionPositionOffsets, setQuestionPositionOffsets] = useState(
+        boardPositions.map(() => ({ x: 0, y: 0 }))
     );
-
-    console.log(currentIndex);
-    console.log(isPlaying);
-    
-    
+    const [selectedShortcutIndices, setSelectedShortcutIndices] = useState([])
 
     useEffect(() => {
         document.body.style.background = "rgba(0, 119, 255, 0.8)";
@@ -38,56 +33,66 @@ function MainGame() {
         };
     }, []);
 
-
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh" }}>
                 <div style={{ alignSelf: "flex-start" }}>
-                    <MultiHeart numHeart={numHeart} />
+                    <MultiHeart numHeart={remainingLives} />
                     <Dice
-                        currentLocation={currentLocation}
-                        setCurrentLocation={setCurrentLocation}
-                        QuestionPosition={QuestionPosition}
+                        currentLocation={currentPlayerPosition}
+                        setCurrentLocation={setCurrentPlayerPosition}
+                        QuestionPosition={boardPositions}
                         setCurrentIndex={setCurrentIndex}
                         currentIndex={currentIndex}
-                        setIsQuesttionModalOpen={setIsQuesttionModalOpen}
-                        setCurrentRollNum={setCurrentRollNum}
+                        setIsQuesttionModalOpen={setIsQuestionModalOpen}
+                        setCurrentRollNum={setDiceValue}
                         isPlaying={isPlaying}
                         setIsPlaying={setIsPlaying}
                     />
                 </div>
 
                 <MultiQBox
-                    currentLocation={currentLocation}
-                    setIsQuesttionModalOpen={setIsQuesttionModalOpen}
-                    isQuesttionModalOpen={isQuesttionModalOpen}
-                    setNumHeart={setNumHeart}
+                    currentLocation={currentPlayerPosition}
+                    setIsQuesttionModalOpen={setIsQuestionModalOpen}
+                    isQuesttionModalOpen={isQuestionModalOpen}
+                    setNumHeart={setRemainingLives}
                     setCurrentIndex={setCurrentIndex}
-                    setListQusettionOffsetPosision={setListQusettionOffsetPosision}
-                    QuestionPosition={QuestionPosition}
+                    setListQusettionOffsetPosision={setQuestionPositionOffsets}
+                    QuestionPosition={boardPositions}
                     setLossIsAlertOpen={setLossIsAlertOpen}
                     setWinIsAlertOpen={setWinIsAlertOpen}
-                    currentRollNum={currentRollNum}
-                    setCurrentLocation={setCurrentLocation}
+                    currentRollNum={diceValue}
+                    setCurrentLocation={setCurrentPlayerPosition}
                     setIsPlaying={setIsPlaying}
                 />
 
                 <div style={{ alignSelf: "flex-start" }}>
-                    <ExplanMark isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+                    <ExplanMark isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />
                 </div>
             </div>
 
-            <SGVPath positions={listQusettionOffsetPosision} />
-            {/* <SGVPathArrow /> */}
+            <SGVPath positions={questionPositionOffsets} />
+
             {/* <WaveAnimationSVG listQusettionOffsetPosision={listQusettionOffsetPosision}/> */}
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}
             <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
                 <MovingPrivate
-                    listQusettionOffsetPosision={listQusettionOffsetPosision}
+                    listQusettionOffsetPosision={questionPositionOffsets}
                     currentIndex={currentIndex}
                 />
                 <LossAlert isOpen={isLossAlertOpen} onClose={() => setLossIsAlertOpen(false)} />
                 <WinAlert isOpen={isWinAlertOpen} onClose={() => setWinIsAlertOpen(false)} />
+                {[...Array(3)].map((_, i) => (
+                    <SGVPathArrow
+                        key={i}
+                        listQusettionOffsetPosision={questionPositionOffsets}
+                        setSelectedShotCutIndex={setSelectedShortcutIndices}
+                        selectedShotCutIndex={selectedShortcutIndices}
+                        stRow={i}
+                        ndRow={i + 1}
+                    />
+                ))}
+
             </div>
         </div>
     );

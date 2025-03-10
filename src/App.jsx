@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
+import SGVPathArrow from './Wave/SGVPathArrow.jsx'
 
 import Dice from './Dice/dice.jsx'
 import QBox from './QuestionBox/QBox.jsx'
@@ -14,6 +15,7 @@ function App() {
     // <QBox />
     // <MultiQBox/>
     <MainGame/>
+    // <SGVPathArrow x1={50} y1={300} x2={400} y2={100} color="red" strokeWidth={4} />
   )
 }
 

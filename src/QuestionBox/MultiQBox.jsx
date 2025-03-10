@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import QBox from "./QBox";
 
 function MultiQBox(props) {
-    const rows = 7;
-    const cols = 7;
-    const cells = Array.from({ length: rows * cols });
+    const boardRows = 7;
+    const boardColumns = 7;
+    const boardCells = Array.from({ length: boardRows * boardColumns });
 
-    const [questIndexes, setQuestIndexes] = useState([]);
+    const [questionCellIndexes, setQuestionCellIndexes] = useState([]);
 
     useEffect(() => {
         let indexes = [];
 
         // Hàng 1, 3, 5, 7 (index từ 0-6, 14-20, 28-34, 42-48)
         for (let r of [0, 2, 4, 6]) {
-            for (let c = 0; c < cols; c++) {
-                indexes.push(r * cols + c);
+            for (let c = 0; c < boardColumns; c++) {
+                indexes.push(r * boardColumns + c);
             }
         }
 
@@ -37,18 +37,18 @@ function MultiQBox(props) {
             }
         });
 
-        setQuestIndexes(indexes);
+        setQuestionCellIndexes(indexes);
     }, []);
 
     return (
         <div
             style={{
                 display: "grid",
-                gridTemplateColumns: `repeat(${cols}, 100px)`,
-                gridTemplateRows: `repeat(${rows}, 100px)`,
+                gridTemplateColumns: `repeat(${boardColumns}, 100px)`,
+                gridTemplateRows: `repeat(${boardRows}, 100px)`,
             }}
         >
-            {cells.map((_, index) => (
+            {boardCells.map((_, index) => (
                 <div key={index}
                     style={{
                         width: "100px",
@@ -56,11 +56,11 @@ function MultiQBox(props) {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        // background: questIndexes.includes(index) ? "lightblue" : "white",
+                        // background: questionCellIndexes.includes(index) ? "lightblue" : "white",
                         // border: "1px solid black",
                     }}
                 >
-                    {questIndexes.includes(index) &&
+                    {questionCellIndexes.includes(index) &&
                         <QBox
                             index={index}
                             currentLocation={props.currentLocation}

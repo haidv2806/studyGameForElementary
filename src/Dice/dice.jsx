@@ -4,9 +4,9 @@ import "./Dice.css";
 function Dice(props) {
     const diceRef = useRef(null);
     const [rotation, setRotation] = useState("");
-    const [animationTime, setAnimationTime] = useState("")
+    const [diceAnimationDuration, setDiceAnimationDuration] = useState("")
     
-    async function randomDice() {
+    async function rollDiceAndMove() {
         props.setIsPlaying(true)
         const random = Math.floor(Math.random() * 6) + 1;
         props.setCurrentRollNum(random)
@@ -22,11 +22,10 @@ function Dice(props) {
                     return nextIndex;
                 });
         
-                // Khi chạy lần cuối cùng, mở modal
                 if (i === random) {
                     setTimeout(() => {
                         props.setIsQuesttionModalOpen(true);
-                    }, 1000); // Đợi chút trước khi mở modal
+                    }, 1000);
                 }
             }, 1000 * i);
         }
@@ -34,7 +33,7 @@ function Dice(props) {
 
     const rollDice = (random) => {
         return new Promise((resolve) => {
-            setAnimationTime("rolling 4s");
+            setDiceAnimationDuration("rolling 4s");
 
             setTimeout(() => {
                 let transform = "";
@@ -62,16 +61,16 @@ function Dice(props) {
                         break;
                 }
 
-                setAnimationTime("");
+                setDiceAnimationDuration("");
                 setRotation(transform);
-                resolve(); // ✅ Giải quyết Promise sau khi hoàn tất
+                resolve();
             }, 4050);
         });
     };
 
     return (
         <div className="container">
-            <div className="dice" ref={diceRef} style={{ transform: rotation, animation: animationTime }}>
+            <div className="dice" ref={diceRef} style={{ transform: rotation, animation: diceAnimationDuration }}>
                 <div className={"face front"}></div>
                 <div className={"face back"}></div>
                 <div className={"face top"}></div>
@@ -80,7 +79,7 @@ function Dice(props) {
                 <div className={"face left"}></div>
             </div>
 
-            <button className="roll" onClick={() => !props.isPlaying && randomDice()}>
+            <button className="roll" onClick={() => !props.isPlaying && rollDiceAndMove()}>
                 Roll Dice
             </button>
         </div>

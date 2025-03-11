@@ -75,6 +75,7 @@ function MultiQBox(props) {
                             setCurrentLocation={props.setCurrentLocation}
                             setCurrentIndex={props.setCurrentIndex}
                             setIsPlaying={props.setIsPlaying}
+                            stepNum={props.stepNum}
                         />}
                     
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}

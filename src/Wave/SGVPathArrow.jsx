@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-function SGVPathArrow({ listQusettionOffsetPosision, setSelectedShotCutIndex, selectedShotCutIndex, stRow, ndRow }) {
+function SGVPathArrow({ 
+    listQusettionOffsetPosision, 
+    setSelectedShotCutIndex, 
+    selectedShotCutIndex, 
+    stRow, 
+    ndRow, 
+    setShotCutStartPosition,
+    setShotCutEndPosition ,
+    boardPositions
+}) {
     const [randomFirstRow, setRandomFirstRow] = useState(null)
     const [randomSecondRow, setRandomSecondRow] = useState(null)
     const [isUpdown, setItUpdown] = useState(false)
+    // boardPositions= boardPositions.slice(1)
 
     if (listQusettionOffsetPosision.length < 2) return null; // Đảm bảo có ít nhất 2 điểm
 
@@ -25,18 +35,28 @@ function SGVPathArrow({ listQusettionOffsetPosision, setSelectedShotCutIndex, se
         }
     }
 
+
     useEffect(() => {
-        const random = Math.floor(Math.random() * 2)
+        if (randomFirstRow !== null && randomSecondRow !== null) return; // Đảm bảo chỉ chạy 1 lần
+
+        const random = Math.random() < 0.5; // 50% xác suất true hoặc false
+        let randomStartPosition, randomEndPosition;
+
         if (random) {
-            setItUpdown(true)
-            setRandomFirstRow(randomForShotCutIndex(ndRow))
-            setRandomSecondRow(randomForShotCutIndex(stRow))
+            setItUpdown(true);
+            randomStartPosition = randomForShotCutIndex(ndRow);
+            randomEndPosition = randomForShotCutIndex(stRow);
         } else {
-            setItUpdown(false)
-            setRandomFirstRow(randomForShotCutIndex(stRow))
-            setRandomSecondRow(randomForShotCutIndex(ndRow))
+            setItUpdown(false);
+            randomStartPosition = randomForShotCutIndex(stRow);
+            randomEndPosition = randomForShotCutIndex(ndRow);
         }
-    }, [])
+
+        setShotCutStartPosition(prev => [...prev, boardPositions[randomStartPosition]]);
+        setShotCutEndPosition(prev => [...prev, boardPositions[randomEndPosition]]);
+        setRandomFirstRow(randomStartPosition);
+        setRandomSecondRow(randomEndPosition);
+    }, []); // Dependency array rỗng để đảm bảo chỉ chạy 1 lần
 
     if (randomFirstRow === null || randomSecondRow === null) return null; // Đợi giá trị được khởi tạo
 

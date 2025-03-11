@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-function MovingPrivate({ listQusettionOffsetPosision, currentIndex }) {
+function MovingPrivate({ listQusettionOffsetPosision, currentIndex, currentPlayerPosition, boardPositions }) {
     if (listQusettionOffsetPosision.length === 0) {
         return null; // Không hiển thị nếu chưa có dữ liệu
     }
@@ -12,8 +12,8 @@ function MovingPrivate({ listQusettionOffsetPosision, currentIndex }) {
             alt="Moving Object"
             style={{ width: "70px", height: "70px", position: "absolute" }}
             animate={{
-                x: listQusettionOffsetPosision[currentIndex]?.x || 0, 
-                y: listQusettionOffsetPosision[currentIndex]?.y || window.innerHeight
+                x: listQusettionOffsetPosision[boardPositions.indexOf(currentPlayerPosition)]?.x || 0, 
+                y: listQusettionOffsetPosision[boardPositions.indexOf(currentPlayerPosition)]?.y || window.innerHeight
             }}
             transition={{ duration: 1, ease: "linear" }} // Chuyển động trong 1s
         />

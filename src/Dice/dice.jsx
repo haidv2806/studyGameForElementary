@@ -5,27 +5,45 @@ function Dice(props) {
     const diceRef = useRef(null);
     const [rotation, setRotation] = useState("");
     const [diceAnimationDuration, setDiceAnimationDuration] = useState("")
-    
+
     async function rollDiceAndMove() {
         props.setIsPlaying(true)
-        const random = Math.floor(Math.random() * 6) + 1;
+        props.setStepNum([0])
+        // const random = Math.floor(Math.random() * 6) + 1;
+        const random = 5;
         props.setCurrentRollNum(random)
         await rollDice(random);
-    
+
+        let currentPos = props.currentLocation;
+        let currentIdx = props.currentIndex;
+
         for (let i = 1; i <= random; i++) {
             setTimeout(() => {
-                props.setCurrentIndex(prevIndex => {
-                    const nextIndex = prevIndex + 1;
-                    if (nextIndex < props.QuestionPosition.length) {
-                        props.setCurrentLocation(props.QuestionPosition[nextIndex]);
-                    }
-                    return nextIndex;
-                });
-        
+                currentIdx += 1;
+                if (currentIdx < props.QuestionPosition.length) {
+                    currentPos = props.QuestionPosition[currentIdx];
+                    props.setCurrentLocation(currentPos);
+                    props.setCurrentIndex(currentIdx);
+                    props.setStepNum(prev => [...prev, currentIdx])
+                }
                 if (i === random) {
-                    setTimeout(() => {
-                        props.setIsQuesttionModalOpen(true);
-                    }, 1000);
+                    if (props.shotCutStartPosition.includes(currentPos)) {
+                        const index = props.shotCutStartPosition.indexOf(currentPos);
+                        console.log("index: ", index);
+
+                        setTimeout(() => {
+                            props.setCurrentLocation(props.shotCutEndPosition[index]);
+                            props.setCurrentIndex(props.QuestionPosition.indexOf(props.shotCutEndPosition[index]));
+                            props.setStepNum(prev => [...prev, currentIdx])
+                            setTimeout(() => {
+                                props.setIsQuesttionModalOpen(true);
+                            }, 1000);
+                        }, 1000);
+                    } else {
+                        setTimeout(() => {
+                            props.setIsQuesttionModalOpen(true);
+                        }, 1000);
+                    }
                 }
             }, 1000 * i);
         }

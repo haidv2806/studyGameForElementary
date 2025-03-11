@@ -25,6 +25,18 @@ function MainGame() {
         boardPositions.map(() => ({ x: 0, y: 0 }))
     );
     const [selectedShortcutIndices, setSelectedShortcutIndices] = useState([])
+    const [shotCutStartPosition, setShotCutStartPosition] = useState([])
+    const [shotCutEndPosition, setShotCutEndPosition] = useState([])
+    const [stepNum, setStepNum] = useState([0])
+    console.log("================================================");
+    
+    console.log("shotCutStartPosition: ", shotCutStartPosition);
+    console.log("shotCutEndPosition: ", shotCutEndPosition);
+    console.log("questionPositionOffsets: ", questionPositionOffsets);
+    console.log("currentPlayerPosition: ", currentPlayerPosition);
+    
+    
+    
 
     useEffect(() => {
         document.body.style.background = "rgba(0, 119, 255, 0.8)";
@@ -44,10 +56,13 @@ function MainGame() {
                         QuestionPosition={boardPositions}
                         setCurrentIndex={setCurrentIndex}
                         currentIndex={currentIndex}
+                        setStepNum={setStepNum}
                         setIsQuesttionModalOpen={setIsQuestionModalOpen}
                         setCurrentRollNum={setDiceValue}
                         isPlaying={isPlaying}
                         setIsPlaying={setIsPlaying}
+                        shotCutStartPosition={shotCutStartPosition}
+                        shotCutEndPosition={shotCutEndPosition}
                     />
                 </div>
 
@@ -64,6 +79,8 @@ function MainGame() {
                     currentRollNum={diceValue}
                     setCurrentLocation={setCurrentPlayerPosition}
                     setIsPlaying={setIsPlaying}
+                    shotCutStartPosition={shotCutStartPosition}
+                    stepNum={stepNum}
                 />
 
                 <div style={{ alignSelf: "flex-start" }}>
@@ -79,6 +96,8 @@ function MainGame() {
                 <MovingPrivate
                     listQusettionOffsetPosision={questionPositionOffsets}
                     currentIndex={currentIndex}
+                    currentPlayerPosition={currentPlayerPosition}
+                    boardPositions={boardPositions}
                 />
                 <LossAlert isOpen={isLossAlertOpen} onClose={() => setLossIsAlertOpen(false)} />
                 <WinAlert isOpen={isWinAlertOpen} onClose={() => setWinIsAlertOpen(false)} />
@@ -90,6 +109,9 @@ function MainGame() {
                         selectedShotCutIndex={selectedShortcutIndices}
                         stRow={i}
                         ndRow={i + 1}
+                        setShotCutStartPosition={setShotCutStartPosition}
+                        setShotCutEndPosition={setShotCutEndPosition}
+                        boardPositions={boardPositions}
                     />
                 ))}
 

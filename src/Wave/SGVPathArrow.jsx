@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-function SGVPathArrow({ 
-    listQusettionOffsetPosision, 
-    setSelectedShotCutIndex, 
-    selectedShotCutIndex, 
-    stRow, 
-    ndRow, 
+function SGVPathArrow({
+    listQusettionOffsetPosision,
+    setSelectedShotCutIndex,
+    selectedShotCutIndex,
+    stRow,
+    ndRow,
     setShotCutStartPosition,
-    setShotCutEndPosition ,
-    boardPositions
+    setShotCutEndPosition,
+    boardPositions,
+    arr
 }) {
     const [randomFirstRow, setRandomFirstRow] = useState(null)
     const [randomSecondRow, setRandomSecondRow] = useState(null)
@@ -27,10 +28,11 @@ function SGVPathArrow({
     function randomForShotCutIndex(row) {
         const randomNumber = IndexInRows[row][Math.floor(Math.random() * IndexInRows[row].length)];
 
-        if (selectedShotCutIndex.includes(randomNumber)) {
+        if (arr.includes(randomNumber)) {
             return randomForShotCutIndex(row);
         } else {
-            setSelectedShotCutIndex(prev => [...prev, randomNumber]);
+            // setSelectedShotCutIndex(prev => [...prev, randomNumber]);
+            arr.push(randomNumber)
             return randomNumber;
         }
     }

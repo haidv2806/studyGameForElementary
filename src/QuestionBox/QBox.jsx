@@ -58,7 +58,7 @@ function QBox(props) {
         if (!isCorrect) {
             const reversedSteps = [...props.stepNum].reverse(); // Đảo mảng mà không ảnh hưởng mảng gốc
             console.log(reversedSteps);
-            
+
             for (let i = 0; i < reversedSteps.length; i++) {
                 setTimeout(() => {
                     props.setCurrentIndex(prevIndex => {
@@ -122,8 +122,12 @@ function QBox(props) {
                     : props.index === 21 ? `translate(-30px, 0px)`
                         : `translate(0px, ${y}px)`
             }}>
-
-            {sign ? num1 + " x " + num2 : num3 + " / " + num1}
+            {props.shotCutStartPosition.includes(props.index) ?
+                <img src="/triangle.png" alt="" width={23} />
+                :
+                sign ? num1 + " x " + num2 : num3 + " / " + num1
+            }
+            {/* {sign ? num1 + " x " + num2 : num3 + " / " + num1} */}
 
             <Modal
                 isOpen={props.index == props.currentLocation && props.isQuesttionModalOpen}
@@ -163,10 +167,29 @@ function QBox(props) {
                         onChange={handleChange}
                         value={answer}
                         type="number"
-                        placeholder="Câu trả lời của bạn là?"
+                        placeholder="Nhập câu trả lời..."
                         style={{
-                            fontSize: "20px",
-                            padding: "5px"
+                            fontSize: "18px",
+                            padding: "12px 15px",
+                            width: "100%",
+                            maxWidth: "300px",
+                            border: "2px solid rgba(200, 200, 200, 0.5)", // Màu viền nhẹ
+                            borderRadius: "8px",
+                            outline: "none",
+                            transition: "border 0.3s, box-shadow 0.3s",
+                            backgroundColor: "rgba(255, 255, 255, 0.3)", // Màu trong hơi đục
+                            boxShadow: "inset 0 2px 5px rgba(0,0,0,0.1)",
+                            backdropFilter: "blur(5px)", // Hiệu ứng mờ nền
+                            WebkitAppearance: "none", // Ẩn nút tăng/giảm trên Safari
+                            MozAppearance: "textfield" // Ẩn nút tăng/giảm trên Firefox
+                        }}
+                        onFocus={(e) => {
+                            e.target.style.border = "2px solid rgba(74, 144, 226, 0.7)";
+                            e.target.style.boxShadow = "0 0 8px rgba(74, 144, 226, 0.3)";
+                        }}
+                        onBlur={(e) => {
+                            e.target.style.border = "2px solid rgba(200, 200, 200, 0.5)";
+                            e.target.style.boxShadow = "none";
                         }}
                     />
 

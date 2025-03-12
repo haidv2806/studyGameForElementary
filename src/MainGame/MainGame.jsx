@@ -47,6 +47,7 @@ function MainGame() {
     //     }
     // }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
 
+    let arr =[]
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh" }}>
@@ -111,12 +112,12 @@ function MainGame() {
                         selectedShotCutIndex={selectedShortcutIndices}
                         stRow={i}
                         ndRow={i + 1}
+                        arr={arr}
                         setShotCutStartPosition={setShotCutStartPosition}
                         setShotCutEndPosition={setShotCutEndPosition}
                         boardPositions={boardPositions}
                     />
                 ))}
-
             </div>
         </div>
     );

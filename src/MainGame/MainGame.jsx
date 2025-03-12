@@ -28,15 +28,6 @@ function MainGame() {
     const [shotCutStartPosition, setShotCutStartPosition] = useState([])
     const [shotCutEndPosition, setShotCutEndPosition] = useState([])
     const [stepNum, setStepNum] = useState([])
-    // console.log("================================================");
-    
-    // console.log("shotCutStartPosition: ", shotCutStartPosition);
-    // console.log("shotCutEndPosition: ", shotCutEndPosition);
-    // console.log("questionPositionOffsets: ", questionPositionOffsets);
-    // console.log("currentPlayerPosition: ", currentPlayerPosition);
-    
-    
-    
 
     useEffect(() => {
         document.body.style.background = "rgba(0, 119, 255, 0.8)";
@@ -44,6 +35,17 @@ function MainGame() {
             document.body.style.background = "";
         };
     }, []);
+
+    // Debug logs wrapped in useEffect to prevent unnecessary re-renders
+    // useEffect(() => {
+    //     if (process.env.NODE_ENV === 'development') {
+    //         console.log("================================================");
+    //         console.log("shotCutStartPosition: ", shotCutStartPosition);
+    //         console.log("shotCutEndPosition: ", shotCutEndPosition);
+    //         console.log("questionPositionOffsets: ", questionPositionOffsets);
+    //         console.log("currentPlayerPosition: ", currentPlayerPosition);
+    //     }
+    // }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
 
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>

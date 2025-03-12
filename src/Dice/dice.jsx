@@ -8,9 +8,9 @@ function Dice(props) {
 
     async function rollDiceAndMove() {
         props.setIsPlaying(true)
-        props.setStepNum([])
-        const random = Math.floor(Math.random() * 6) + 1;
-        // const random = 1;
+        props.setStepNum([props.currentLocation])
+        // const random = Math.floor(Math.random() * 6) + 1;
+        const random = 1;
         props.setCurrentRollNum(random)
         await rollDice(random);
 

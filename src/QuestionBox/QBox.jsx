@@ -57,24 +57,20 @@ function QBox(props) {
 
         if (!isCorrect) {
             const reversedSteps = [...props.stepNum].reverse(); // Đảo mảng mà không ảnh hưởng mảng gốc
-
+            console.log(reversedSteps);
+            
             for (let i = 0; i < reversedSteps.length; i++) {
                 setTimeout(() => {
                     props.setCurrentIndex(prevIndex => {
                         if (i < reversedSteps.length) {
                             const nextIndex = reversedSteps[i];
                             props.setCurrentLocation(props.QuestionPosition[nextIndex]);
+                            props.setCurrentIndex(props.QuestionPosition[nextIndex])
                             return nextIndex;
                         }
                         return prevIndex;
                     });
                 }, 1000 * (i + 1));
-
-                setTimeout(() => {
-                    if (props.QuestionPosition[props.stepNum[0]] == 43) {
-                        props.setCurrentLocation(props.QuestionPosition[42]);
-                    }
-                }, 1000 * (reversedSteps.length + 1));
             }
 
             props.setNumHeart(prevHearts => {

@@ -69,6 +69,12 @@ function QBox(props) {
                         return prevIndex;
                     });
                 }, 1000 * (i + 1));
+
+                setTimeout(() => {
+                    if (props.QuestionPosition[props.stepNum[0]] == 43) {
+                        props.setCurrentLocation(props.QuestionPosition[42]);
+                    }
+                }, 1000 * (reversedSteps.length + 1));
             }
 
             props.setNumHeart(prevHearts => {

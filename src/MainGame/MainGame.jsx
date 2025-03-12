@@ -27,13 +27,13 @@ function MainGame() {
     const [selectedShortcutIndices, setSelectedShortcutIndices] = useState([])
     const [shotCutStartPosition, setShotCutStartPosition] = useState([])
     const [shotCutEndPosition, setShotCutEndPosition] = useState([])
-    const [stepNum, setStepNum] = useState([0])
-    console.log("================================================");
+    const [stepNum, setStepNum] = useState([])
+    // console.log("================================================");
     
-    console.log("shotCutStartPosition: ", shotCutStartPosition);
-    console.log("shotCutEndPosition: ", shotCutEndPosition);
-    console.log("questionPositionOffsets: ", questionPositionOffsets);
-    console.log("currentPlayerPosition: ", currentPlayerPosition);
+    // console.log("shotCutStartPosition: ", shotCutStartPosition);
+    // console.log("shotCutEndPosition: ", shotCutEndPosition);
+    // console.log("questionPositionOffsets: ", questionPositionOffsets);
+    // console.log("currentPlayerPosition: ", currentPlayerPosition);
     
     
     

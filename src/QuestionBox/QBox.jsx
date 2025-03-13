@@ -132,6 +132,8 @@ function QBox(props) {
         setTimeout(() => {
             props.setIsPlaying(false)
         }, 1000* (reversedSteps.length + 2));
+    } else {
+        props.setIsPlaying(false)
     }
 }
 

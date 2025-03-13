@@ -8,18 +8,27 @@ function Dice(props) {
 
     async function rollDiceAndMove() {
         props.setIsPlaying(true)
-        props.setStepNum([props.currentLocation])
+        props.setStepNum([props.currentIndex])
         const random = Math.floor(Math.random() * 6) + 1;
-        // const random = 1;
+        console.log("dd");
+        
         props.setCurrentRollNum(random)
         await rollDice(random);
 
         let currentPos = props.currentLocation;
+        console.log(props.currentLocation);
+        console.log(props.currentIndex);
+        console.log("===========");
+        
+        
+        
         let currentIdx = props.currentIndex;
 
         for (let i = 1; i <= random; i++) {
             setTimeout(() => {
                 currentIdx += 1;
+                console.log(currentIdx);
+                
                 if (currentIdx < props.QuestionPosition.length) {
                     currentPos = props.QuestionPosition[currentIdx];
                     props.setCurrentLocation(currentPos);
@@ -29,7 +38,6 @@ function Dice(props) {
                 if (i === random) {
                     if (props.shotCutStartPosition.includes(currentPos)) {
                         const index = props.shotCutStartPosition.indexOf(currentPos);
-                        console.log("index: ", index);
 
                         setTimeout(() => {
                             props.setCurrentLocation(props.shotCutEndPosition[index]);
@@ -51,7 +59,7 @@ function Dice(props) {
 
     const rollDice = (random) => {
         return new Promise((resolve) => {
-            setDiceAnimationDuration("rolling 4s");
+            setDiceAnimationDuration("rolling 3s");
 
             setTimeout(() => {
                 let transform = "";

@@ -65,8 +65,8 @@ function SGVPathArrow({
     const { x: x1, y: y1 } = listQusettionOffsetPosision[randomFirstRow];
     const { x: x2, y: y2 } = listQusettionOffsetPosision[randomSecondRow];
 
-    const color = "White";
-    const strokeWidth = 2;
+    const color = "white";
+    const strokeWidth = 3;
 
     // Tính điểm uốn cong tại 30% và 60%
     const midX1 = x1 + (x2 - x1) * 0.3;

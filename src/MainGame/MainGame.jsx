@@ -28,13 +28,8 @@ function MainGame() {
     const [shotCutStartPosition, setShotCutStartPosition] = useState([])
     const [shotCutEndPosition, setShotCutEndPosition] = useState([])
     const [stepNum, setStepNum] = useState([])
-
-    useEffect(() => {
-        document.body.style.background = "rgba(0, 119, 255, 0.8)";
-        return () => {
-            document.body.style.background = "";
-        };
-    }, []);
+    console.log('currentIndex: ', currentIndex);
+    console.log('current location', currentPlayerPosition);
 
     // Debug logs wrapped in useEffect to prevent unnecessary re-renders
     // useEffect(() => {
@@ -50,7 +45,9 @@ function MainGame() {
     let arr =[]
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh" }}>
+            <SGVPath positions={questionPositionOffsets} />
+            
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh", zIndex: 2}}>
                 <div style={{ alignSelf: "flex-start" }}>
                     <MultiHeart numHeart={remainingLives} />
                     <Dice
@@ -84,6 +81,7 @@ function MainGame() {
                     setIsPlaying={setIsPlaying}
                     shotCutStartPosition={shotCutStartPosition}
                     stepNum={stepNum}
+                    isQuestionModalOpen={isQuestionModalOpen}
                 />
 
                 <div style={{ alignSelf: "flex-start" }}>
@@ -91,7 +89,7 @@ function MainGame() {
                 </div>
             </div>
 
-            <SGVPath positions={questionPositionOffsets} />
+            
 
             {/* <WaveAnimationSVG listQusettionOffsetPosision={listQusettionOffsetPosision}/> */}
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}

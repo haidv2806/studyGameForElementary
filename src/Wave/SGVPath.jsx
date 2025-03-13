@@ -33,7 +33,7 @@ function SGVPath({ positions }) {
         //     />
         // </svg>
 
-<svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, pointerEvents: "none", zIndex: -1 }}>
+<svg width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, pointerEvents: "none", zIndex: 0 }}>
     <defs>
         {/* Gradient xanh biển pha trắng */}
         <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">

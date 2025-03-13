@@ -1,22 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-// import './App.css'
-import SGVPathArrow from './Wave/SGVPathArrow.jsx'
-
-import Dice from './Dice/dice.jsx'
-import QBox from './QuestionBox/QBox.jsx'
-import MultiQBox from './QuestionBox/MultiQBox.jsx'
-import MainGame from './MainGame/MainGame.jsx'
+import React, { useEffect } from 'react';
+import MainGame from './MainGame/MainGame.jsx';
 
 function App() {
+  useEffect(() => {
+    // Background màu xanh
+    document.body.style.background = "rgba(0, 119, 255, 0.8)";
+    return () => {
+      document.body.style.background = "";
+    };
+  }, []);
+
   return (
-    // <Dice />
-    // <QBox />
-    // <MultiQBox/>
-    <MainGame/>
-    // <SGVPathArrow x1={50} y1={300} x2={400} y2={100} color="red" strokeWidth={4} />
-  )
+    <div style={{ position: "relative", height: "100vh" }}>
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url('/map.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          zIndex: 0,
+        }}
+      />
+      <MainGame />
+    </div>
+  );
 }
 
-export default App
+export default App;

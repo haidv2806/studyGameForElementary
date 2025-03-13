@@ -77,6 +77,7 @@ function MultiQBox(props) {
                             setIsPlaying={props.setIsPlaying}
                             stepNum={props.stepNum}
                             shotCutStartPosition={props.shotCutStartPosition}
+                            isQuestionModalOpen={props.isQuestionModalOpen}
                         />}
                     
                     {index == 0 && <img src="/treasure.png" alt="" width={150} />}

@@ -15,8 +15,8 @@ function QBox(props) {
     const [y, setY] = useState(Math.floor(Math.random() * 40) - 20)
 
     function randomQuestion() {
-        const random1 = Math.floor(Math.random() * 9) + 1;
-        const random2 = Math.floor(Math.random() * 9) + 1;
+        const random1 = Math.floor(Math.random() * 4) + 2;
+        const random2 = Math.floor(Math.random() * 4) + 2;
         setSign(Math.floor(Math.random() * 2))
 
         if (sign) {
@@ -56,22 +56,27 @@ function QBox(props) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;
 
         if (!isCorrect) {
-            const reversedSteps = [...props.stepNum].reverse(); // Đảo mảng mà không ảnh hưởng mảng gốc
-            console.log(reversedSteps);
+            // const reversedSteps = [...props.stepNum].reverse(); // Đảo mảng mà không ảnh hưởng mảng gốc
 
-            for (let i = 0; i < reversedSteps.length; i++) {
-                setTimeout(() => {
-                    props.setCurrentIndex(prevIndex => {
-                        if (i < reversedSteps.length) {
-                            const nextIndex = reversedSteps[i];
-                            props.setCurrentLocation(props.QuestionPosition[nextIndex]);
-                            props.setCurrentIndex(props.QuestionPosition[nextIndex])
-                            return nextIndex;
-                        }
-                        return prevIndex;
-                    });
-                }, 1000 * (i + 1));
-            }
+            // for (let i = 0; i < reversedSteps.length; i++) {
+            //     setTimeout(() => {
+            //         props.setCurrentIndex(prevIndex => {
+            //             if (i < reversedSteps.length) {
+            //                 const nextIndex = reversedSteps[i];
+            //                 if (nextIndex === 42) {
+            //                     props.setCurrentIndex(0);
+            //                     props.setCurrentLocation(props.QuestionPosition[0]);
+            //                 } else {
+            //                     props.setCurrentIndex(nextIndex);
+            //                     props.setCurrentLocation(props.QuestionPosition[nextIndex]);
+            //                 }
+                            
+            //                 return nextIndex;
+            //             }
+            //             return prevIndex;
+            //         });
+            //     }, 1000 * (i + 1));
+            // }
 
             props.setNumHeart(prevHearts => {
                 const newHearts = [...prevHearts];
@@ -95,8 +100,40 @@ function QBox(props) {
 
         setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
 
-        props.setIsPlaying(false)
+
     }
+
+    function returnPosition(input) {
+        const isCorrect = sign ? input == num1 * num2 : input == num2;
+
+        if (!isCorrect) {
+            const reversedSteps = [...props.stepNum].reverse(); // Đảo mảng mà không ảnh hưởng mảng gốc
+
+            for (let i = 0; i < reversedSteps.length; i++) {
+                setTimeout(() => {
+                    props.setCurrentIndex(prevIndex => {
+                        if (i < reversedSteps.length) {
+                            const nextIndex = reversedSteps[i];
+                            if (nextIndex === 42) {
+                                props.setCurrentIndex(0);
+                                props.setCurrentLocation(props.QuestionPosition[0]);
+                            } else {
+                                props.setCurrentIndex(nextIndex);
+                                props.setCurrentLocation(props.QuestionPosition[nextIndex]);
+                            }
+                            
+                            return nextIndex;
+                        }
+                        return prevIndex;
+                    });
+                }, 1000 * (i + 1));
+            }
+
+        setTimeout(() => {
+            props.setIsPlaying(false)
+        }, 1000* (reversedSteps.length + 2));
+    }
+}
 
     function handleChange(event) {
         setAnswer(event.target.value)
@@ -125,7 +162,7 @@ function QBox(props) {
             {props.shotCutStartPosition.includes(props.index) ?
                 <img src="/triangle.png" alt="" width={23} />
                 :
-                sign ? num1 + " x " + num2 : num3 + " / " + num1
+                sign ? num1 + " x " + num2 : num3 + " : " + num1
             }
             {/* {sign ? num1 + " x " + num2 : num3 + " / " + num1} */}
 
@@ -161,7 +198,7 @@ function QBox(props) {
 
                     <h1>Bạn phải trả lời câu hỏi sau</h1>
 
-                    <h2>{sign ? num1 + " x " + num2 : num3 + " / " + num1}</h2>
+                    <h2>{sign ? num1 + " x " + num2 : num3 + " : " + num1}</h2>
 
                     <input
                         onChange={handleChange}
@@ -215,6 +252,7 @@ function QBox(props) {
                         <button
                             onClick={() => (
                                 props.setIsQuesttionModalOpen(false),
+                                returnPosition(answer),
                                 setFeedback(""),
                                 setAnswer()
                             )}

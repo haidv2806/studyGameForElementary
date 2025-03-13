@@ -29,7 +29,13 @@ function ExplanMark(props) {
                         padding: "20px", 
                         background: "rgba(255, 255, 255, 0.3)", 
                         borderRadius: "10px",
-                        border: "none"
+                        border: "none",
+                        backgroundImage: "url('/leatherette_1.png')", // Đường dẫn ảnh nền
+                        // backgroundSize: "cover", // Ảnh phủ toàn bộ modal
+                        // backgroundPosition: "center", // Căn giữa ảnh nền
+                        backgroundSize: "80vw auto",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center calc(50% + 40px)",
                     }
                 }}
             >

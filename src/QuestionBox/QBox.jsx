@@ -149,7 +149,7 @@ function QBox(props) {
                 backgroundColor: props.index == props.currentLocation ? "green" : "white",
                 borderRadius: "50%",
                 border: "1px solid black",
-                fontSize: 20,
+                fontSize: 17,
                 margin: 10,
                 display: "flex",
                 justifyContent: "center",
@@ -182,7 +182,11 @@ function QBox(props) {
                         padding: "20px",
                         background: "rgba(255, 255, 255, 0.3)",
                         borderRadius: "10px",
-                        border: "none"
+                        border: "none",
+                        backgroundImage: "url('/leatherette_1.png')", // Đường dẫn ảnh nền
+                        backgroundSize: "80vw auto",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
                     }
                 }}
             >

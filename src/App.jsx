@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import MainGame from './MainGame/MainGame.jsx';
+import StarterModal from './Explan/starterModal.jsx';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
         }}
       />
       <MainGame />
+      <StarterModal/>
     </div>
   );
 }

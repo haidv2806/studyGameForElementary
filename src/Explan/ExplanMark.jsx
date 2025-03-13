@@ -10,7 +10,7 @@ function ExplanMark(props) {
     return (
         <div>
             <button onClick={() => setIsOpen(true)}>
-                <img src="exclamation.png" alt="" width={100} />
+                <img src="exclamation.png" alt="" width={50} />
             </button>
 
             <Modal

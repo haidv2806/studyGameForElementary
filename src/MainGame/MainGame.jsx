@@ -29,6 +29,13 @@ function MainGame() {
     const [shotCutStartPosition, setShotCutStartPosition] = useState([])
     const [shotCutEndPosition, setShotCutEndPosition] = useState([])
     const [stepNum, setStepNum] = useState([])
+    const [awaitTime, setAwaitTime] = useState(false)
+
+    useEffect(()=>{
+        setTimeout(() => {
+            setAwaitTime(true)
+        }, 200);
+    }, [])
 
     // Debug logs wrapped in useEffect to prevent unnecessary re-renders
     // useEffect(() => {
@@ -65,23 +72,27 @@ function MainGame() {
                     />
                 </div>
 
-                <MultiQBox
-                    currentLocation={currentPlayerPosition}
-                    setIsQuesttionModalOpen={setIsQuestionModalOpen}
-                    isQuesttionModalOpen={isQuestionModalOpen}
-                    setNumHeart={setRemainingLives}
-                    setCurrentIndex={setCurrentIndex}
-                    setListQusettionOffsetPosision={setQuestionPositionOffsets}
-                    QuestionPosition={boardPositions}
-                    setLossIsAlertOpen={setLossIsAlertOpen}
-                    setWinIsAlertOpen={setWinIsAlertOpen}
-                    currentRollNum={diceValue}
-                    setCurrentLocation={setCurrentPlayerPosition}
-                    setIsPlaying={setIsPlaying}
-                    shotCutStartPosition={shotCutStartPosition}
-                    stepNum={stepNum}
-                    isQuestionModalOpen={isQuestionModalOpen}
-                />
+                {awaitTime ? 
+                                <MultiQBox
+                                currentLocation={currentPlayerPosition}
+                                setIsQuesttionModalOpen={setIsQuestionModalOpen}
+                                isQuesttionModalOpen={isQuestionModalOpen}
+                                setNumHeart={setRemainingLives}
+                                setCurrentIndex={setCurrentIndex}
+                                setListQusettionOffsetPosision={setQuestionPositionOffsets}
+                                QuestionPosition={boardPositions}
+                                setLossIsAlertOpen={setLossIsAlertOpen}
+                                setWinIsAlertOpen={setWinIsAlertOpen}
+                                currentRollNum={diceValue}
+                                setCurrentLocation={setCurrentPlayerPosition}
+                                setIsPlaying={setIsPlaying}
+                                shotCutStartPosition={shotCutStartPosition}
+                                stepNum={stepNum}
+                                isQuestionModalOpen={isQuestionModalOpen}
+                            />
+                            : null
+                }
+
 
                 <div style={{ alignSelf: "flex-start" }}>
                     <ExplanMark isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />

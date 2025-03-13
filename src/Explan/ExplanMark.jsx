@@ -24,10 +24,10 @@ function ExplanMark(props) {
                     },
                     content: { 
                         width: "60%", 
-                        height: "fit-content", // Chiều cao vừa với nội dung
+                        // height: "fit-content", // Chiều cao vừa với nội dung
                         margin: "auto", 
                         padding: "20px", 
-                        background: "rgba(255, 255, 255, 0.3)", 
+                        background: "rgba(255, 255, 255, 0)", 
                         borderRadius: "10px",
                         border: "none",
                         backgroundImage: "url('/leatherette_1.png')", // Đường dẫn ảnh nền
@@ -47,6 +47,7 @@ function ExplanMark(props) {
                         display: "flex",
                         flexDirection: "column",
                         fontSize: 20,
+                        height: "100%"
                     }}>
                     <h1>Trò chơi hướng đến kho báu</h1>
                     <h2>Cách chơi</h2>

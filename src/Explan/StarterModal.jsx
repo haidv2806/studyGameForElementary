@@ -23,7 +23,7 @@ function starterModal(props) {
                         height: "60%", // Chiều cao vừa với nội dung
                         margin: "auto", 
                         padding: "20px", 
-                        background: "rgba(255, 255, 255, 0.3)", 
+                        background: "rgba(255, 255, 255, 0)", 
                         borderRadius: "10px",
                         border: "none",
                         backgroundImage: "url('/leatherette_3.png')", // Đường dẫn ảnh nền
@@ -42,7 +42,7 @@ function starterModal(props) {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        fontSize: 25,
+                        fontSize: 30,
                         height: "100%"
                     }}>
                         <h1>Trò chơi </h1>

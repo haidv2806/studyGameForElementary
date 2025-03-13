@@ -28,25 +28,23 @@ function MainGame() {
     const [shotCutStartPosition, setShotCutStartPosition] = useState([])
     const [shotCutEndPosition, setShotCutEndPosition] = useState([])
     const [stepNum, setStepNum] = useState([])
-    console.log('currentIndex: ', currentIndex);
-    console.log('current location', currentPlayerPosition);
 
     // Debug logs wrapped in useEffect to prevent unnecessary re-renders
-    // useEffect(() => {
-    //     if (process.env.NODE_ENV === 'development') {
-    //         console.log("================================================");
-    //         console.log("shotCutStartPosition: ", shotCutStartPosition);
-    //         console.log("shotCutEndPosition: ", shotCutEndPosition);
-    //         console.log("questionPositionOffsets: ", questionPositionOffsets);
-    //         console.log("currentPlayerPosition: ", currentPlayerPosition);
-    //     }
-    // }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
+    useEffect(() => {
+        if (process.env.NODE_ENV === 'development') {
+            console.log("================================================");
+            console.log("shotCutStartPosition: ", shotCutStartPosition);
+            console.log("shotCutEndPosition: ", shotCutEndPosition);
+            console.log("questionPositionOffsets: ", questionPositionOffsets);
+            console.log("currentPlayerPosition: ", currentPlayerPosition);
+        }
+    }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
 
     let arr =[]
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
             <SGVPath positions={questionPositionOffsets} />
-            
+
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh", zIndex: 2}}>
                 <div style={{ alignSelf: "flex-start" }}>
                     <MultiHeart numHeart={remainingLives} />

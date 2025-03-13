@@ -59,7 +59,7 @@ function Dice(props) {
 
     const rollDice = (random) => {
         return new Promise((resolve) => {
-            setDiceAnimationDuration("rolling 3s");
+            setDiceAnimationDuration("rolling 2s");
 
             setTimeout(() => {
                 let transform = "";

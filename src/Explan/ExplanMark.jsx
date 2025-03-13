@@ -5,7 +5,7 @@ Modal.setAppElement("#root");
 
 
 function ExplanMark(props) {
-    const [isOpen, setIsOpen] = useState(false);
+    const { isModalOpen: isOpen, setIsModalOpen: setIsOpen } = props;
 
     return (
         <div>

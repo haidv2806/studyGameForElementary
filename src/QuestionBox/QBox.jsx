@@ -200,12 +200,15 @@ function QBox(props) {
                         display: "flex",
                         flexDirection: "column",
                         fontSize: 20,
-                        height: "100%"
+                        height: "100%",
+                        
                     }}>
 
-                    <h1>Bạn phải trả lời câu hỏi sau</h1>
+                    {/* <h1>Bạn phải trả lời câu hỏi sau</h1> */}
 
-                    <h2>{sign ? num1 + " x " + num2 : num3 + " : " + num1}</h2>
+                    <h1 style={{fontSize: 100, margin: 20}}>
+                        {sign ? num1 + " x " + num2 : num3 + " : " + num1}
+                        </h1>
 
                     <input
                         onChange={handleChange}
@@ -225,7 +228,8 @@ function QBox(props) {
                             boxShadow: "inset 0 2px 5px rgba(0,0,0,0.1)",
                             backdropFilter: "blur(5px)", // Hiệu ứng mờ nền
                             WebkitAppearance: "none", // Ẩn nút tăng/giảm trên Safari
-                            MozAppearance: "textfield" // Ẩn nút tăng/giảm trên Firefox
+                            MozAppearance: "textfield", // Ẩn nút tăng/giảm trên Firefox
+                            margin: 20,
                         }}
                         onFocus={(e) => {
                             e.target.style.border = "2px solid rgba(74, 144, 226, 0.7)";
@@ -235,6 +239,11 @@ function QBox(props) {
                             e.target.style.border = "2px solid rgba(200, 200, 200, 0.5)";
                             e.target.style.boxShadow = "none";
                         }}
+                        // onKeyDown={(e) => {
+                        //     if (e.key === "Enter") {
+                        //         AnswerQuestion(answer)
+                        //     }
+                        //   }} 
                     />
 
                     {!feedback &&
@@ -244,7 +253,8 @@ function QBox(props) {
                                 fontSize: 20,
                                 padding: 10,
                                 borderRadius: 10,
-                                backgroundColor: "green"
+                                backgroundColor: "green",
+                                margin: 20
                             }}
                         >
                             xác nhận
@@ -252,7 +262,7 @@ function QBox(props) {
                     }
 
 
-                    {feedback && <div>{feedback}</div>}
+                    {/* {feedback && <div>{feedback}</div>} */}
 
 
                     {feedback &&

@@ -9,6 +9,7 @@ import MovingPrivate from "../Animation/MovingPrivate";
 import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
 import LossAlert from "../Alert/LossAlert";
 import WinAlert from "../Alert/WinAlert";
+import StarterModal from "../Explan/StarterModal";
 
 function MainGame() {
     const boardPositions = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
@@ -30,15 +31,15 @@ function MainGame() {
     const [stepNum, setStepNum] = useState([])
 
     // Debug logs wrapped in useEffect to prevent unnecessary re-renders
-    useEffect(() => {
-        if (process.env.NODE_ENV === 'development') {
-            console.log("================================================");
-            console.log("shotCutStartPosition: ", shotCutStartPosition);
-            console.log("shotCutEndPosition: ", shotCutEndPosition);
-            console.log("questionPositionOffsets: ", questionPositionOffsets);
-            console.log("currentPlayerPosition: ", currentPlayerPosition);
-        }
-    }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
+    // useEffect(() => {
+    //     if (process.env.NODE_ENV === 'development') {
+    //         console.log("================================================");
+    //         console.log("shotCutStartPosition: ", shotCutStartPosition);
+    //         console.log("shotCutEndPosition: ", shotCutEndPosition);
+    //         console.log("questionPositionOffsets: ", questionPositionOffsets);
+    //         console.log("currentPlayerPosition: ", currentPlayerPosition);
+    //     }
+    // }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
 
     let arr =[]
     return (
@@ -84,6 +85,7 @@ function MainGame() {
 
                 <div style={{ alignSelf: "flex-start" }}>
                     <ExplanMark isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />
+                    <StarterModal setIsHelpModalOpen={setIsHelpModalOpen}/>
                 </div>
             </div>
 

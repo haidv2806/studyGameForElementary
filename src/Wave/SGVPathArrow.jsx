@@ -100,7 +100,7 @@ function SGVPathArrow({
                     `M ${x1 + 35},${y1 + 10} 
                       C ${midX1},${midY1} 
                         ${midX2},${midY2} 
-                        ${x2 + 30},${y2 + 54}`
+                        ${x2 + 30},${y2 + 50}`
                 }
                 stroke={color}
                 strokeWidth={strokeWidth}

@@ -90,7 +90,7 @@ function Dice(props) {
                 setDiceAnimationDuration("");
                 setRotation(transform);
                 resolve();
-            }, 4050);
+            }, 2050);
         });
     };
 
@@ -106,7 +106,7 @@ function Dice(props) {
             </div>
 
             <button className="roll" onClick={() => !props.isPlaying && rollDiceAndMove()}>
-                Roll Dice
+                Bắt đầu
             </button>
         </div>
     );

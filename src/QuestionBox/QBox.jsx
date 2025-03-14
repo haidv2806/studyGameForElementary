@@ -4,6 +4,7 @@ import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 function QBox(props) {
+    const [isFirstEnter, setIsFirstEnter] = useState(true);
     const [num1, setNum1] = useState(0)
     const [num2, setNum2] = useState(0)
     const [num3, setNum3] = useState(0)
@@ -141,6 +142,24 @@ function QBox(props) {
         setAnswer(event.target.value)
     }
 
+    const handleKeyDown = (e) => {
+        if (!/[0-9]/.test(e.key) && e.key !== "Backspace") {
+            e.preventDefault();
+          }
+
+        if (e.key === "Enter") {
+            if (isFirstEnter) {
+                AnswerQuestion(answer);
+                setIsFirstEnter(false); // Đánh dấu đã bấm lần đầu
+            } else {
+                props.setIsQuesttionModalOpen(false),
+                returnPosition(answer),
+                setFeedback(""),
+                setAnswer()
+            }
+        }
+    };
+
     return (
         <div
             ref={elementRef}
@@ -213,23 +232,25 @@ function QBox(props) {
                     <input
                         onChange={handleChange}
                         value={answer}
-                        type="number"
-                        placeholder="Nhập câu trả lời..."
+                        type="text"
+                        autoFocus = {true}
                         style={{
-                            fontSize: "18px",
+                            fontSize: "50px",
                             padding: "12px 15px",
-                            width: "100%",
+                            width: "auto",
                             maxWidth: "300px",
-                            border: "2px solid rgba(200, 200, 200, 0.5)", // Màu viền nhẹ
-                            borderRadius: "8px",
+                            minWidth: "10px",
+                            // border: "2px solid rgba(200, 200, 200, 0.5)", // Màu viền nhẹ
+                            // borderRadius: "8px",
                             outline: "none",
-                            transition: "border 0.3s, box-shadow 0.3s",
-                            backgroundColor: "rgba(255, 255, 255, 0.3)", // Màu trong hơi đục
-                            boxShadow: "inset 0 2px 5px rgba(0,0,0,0.1)",
-                            backdropFilter: "blur(5px)", // Hiệu ứng mờ nền
-                            WebkitAppearance: "none", // Ẩn nút tăng/giảm trên Safari
-                            MozAppearance: "textfield", // Ẩn nút tăng/giảm trên Firefox
+                            // transition: "border 0.3s, box-shadow 0.3s",
+                            backgroundColor: "rgba(255, 255, 255, 0.2)", // Màu trong hơi đục
+                            // boxShadow: "inset 0 2px 5px rgba(0,0,0,0.1)",
+                            // backdropFilter: "blur(5px)", // Hiệu ứng mờ nền
+                            // WebkitAppearance: "none", // Ẩn nút tăng/giảm trên Safari
+                            // MozAppearance: "textfield", // Ẩn nút tăng/giảm trên Firefox
                             margin: 20,
+                            textAlign: "center"
                         }}
                         onFocus={(e) => {
                             e.target.style.border = "2px solid rgba(74, 144, 226, 0.7)";
@@ -239,11 +260,7 @@ function QBox(props) {
                             e.target.style.border = "2px solid rgba(200, 200, 200, 0.5)";
                             e.target.style.boxShadow = "none";
                         }}
-                        // onKeyDown={(e) => {
-                        //     if (e.key === "Enter") {
-                        //         AnswerQuestion(answer)
-                        //     }
-                        //   }} 
+                        onKeyDown={handleKeyDown}
                     />
 
                     {!feedback &&
@@ -253,7 +270,7 @@ function QBox(props) {
                                 fontSize: 20,
                                 padding: 10,
                                 borderRadius: 10,
-                                backgroundColor: "green",
+                                backgroundColor: "#8B5A2B",
                                 margin: 20
                             }}
                         >
@@ -277,7 +294,7 @@ function QBox(props) {
                                 fontSize: 20,
                                 padding: 10,
                                 borderRadius: 10,
-                                backgroundColor: "green"
+                                backgroundColor: "#8B5A2B"
                             }}
                         >
                             Tiếp tục

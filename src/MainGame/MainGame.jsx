@@ -31,10 +31,10 @@ function MainGame() {
     const [stepNum, setStepNum] = useState([])
     const [awaitTime, setAwaitTime] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         setTimeout(() => {
             setAwaitTime(true)
-        }, 200);
+        }, 500);
     }, [])
 
     // Debug logs wrapped in useEffect to prevent unnecessary re-renders
@@ -48,12 +48,12 @@ function MainGame() {
     //     }
     // }, [shotCutStartPosition, shotCutEndPosition, questionPositionOffsets, currentPlayerPosition]);
 
-    let arr =[]
+    let arr = []
     return (
         <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
             <SGVPath positions={questionPositionOffsets} />
 
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh", zIndex: 2}}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100vh", zIndex: 2 }}>
                 <div style={{ alignSelf: "flex-start" }}>
                     <MultiHeart numHeart={remainingLives} />
                     <Dice
@@ -72,35 +72,35 @@ function MainGame() {
                     />
                 </div>
 
-                {awaitTime ? 
-                                <MultiQBox
-                                currentLocation={currentPlayerPosition}
-                                setIsQuesttionModalOpen={setIsQuestionModalOpen}
-                                isQuesttionModalOpen={isQuestionModalOpen}
-                                setNumHeart={setRemainingLives}
-                                setCurrentIndex={setCurrentIndex}
-                                setListQusettionOffsetPosision={setQuestionPositionOffsets}
-                                QuestionPosition={boardPositions}
-                                setLossIsAlertOpen={setLossIsAlertOpen}
-                                setWinIsAlertOpen={setWinIsAlertOpen}
-                                currentRollNum={diceValue}
-                                setCurrentLocation={setCurrentPlayerPosition}
-                                setIsPlaying={setIsPlaying}
-                                shotCutStartPosition={shotCutStartPosition}
-                                stepNum={stepNum}
-                                isQuestionModalOpen={isQuestionModalOpen}
-                            />
-                            : null
+                {awaitTime ?
+                    <MultiQBox
+                        currentLocation={currentPlayerPosition}
+                        setIsQuesttionModalOpen={setIsQuestionModalOpen}
+                        isQuesttionModalOpen={isQuestionModalOpen}
+                        setNumHeart={setRemainingLives}
+                        setCurrentIndex={setCurrentIndex}
+                        setListQusettionOffsetPosision={setQuestionPositionOffsets}
+                        QuestionPosition={boardPositions}
+                        setLossIsAlertOpen={setLossIsAlertOpen}
+                        setWinIsAlertOpen={setWinIsAlertOpen}
+                        currentRollNum={diceValue}
+                        setCurrentLocation={setCurrentPlayerPosition}
+                        setIsPlaying={setIsPlaying}
+                        shotCutStartPosition={shotCutStartPosition}
+                        stepNum={stepNum}
+                        isQuestionModalOpen={isQuestionModalOpen}
+                    />
+                    : null
                 }
 
 
                 <div style={{ alignSelf: "flex-start" }}>
                     <ExplanMark isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />
-                    <StarterModal setIsHelpModalOpen={setIsHelpModalOpen}/>
+                    <StarterModal setIsHelpModalOpen={setIsHelpModalOpen} />
                 </div>
             </div>
 
-            
+
 
             {/* <WaveAnimationSVG listQusettionOffsetPosision={listQusettionOffsetPosision}/> */}
             {/* Đảm bảo MovingPrivate nằm trên tất cả */}

@@ -9,7 +9,7 @@ function LossAlert({ isOpen, onClose }) {
                 overlay: { 
                     backgroundColor: "rgba(0, 0, 0, 0.5)", 
                     backdropFilter: "blur(10px)", 
-                    zIndex: 1000 
+                    zIndex: 2000 
                 },
                 content: { 
                     width: "300px", 

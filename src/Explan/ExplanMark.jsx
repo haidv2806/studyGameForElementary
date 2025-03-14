@@ -63,7 +63,7 @@ function ExplanMark(props) {
                             fontSize: 20,
                             padding: 10,
                             borderRadius: 10,
-                            backgroundColor: "green"
+                            backgroundColor: "#8B5A2B"
                         }}
                     >
                         Đóng

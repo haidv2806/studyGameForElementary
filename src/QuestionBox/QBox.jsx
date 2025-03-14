@@ -57,28 +57,6 @@ function QBox(props) {
         const isCorrect = sign ? input == num1 * num2 : input == num2;
 
         if (!isCorrect) {
-            // const reversedSteps = [...props.stepNum].reverse(); // Đảo mảng mà không ảnh hưởng mảng gốc
-
-            // for (let i = 0; i < reversedSteps.length; i++) {
-            //     setTimeout(() => {
-            //         props.setCurrentIndex(prevIndex => {
-            //             if (i < reversedSteps.length) {
-            //                 const nextIndex = reversedSteps[i];
-            //                 if (nextIndex === 42) {
-            //                     props.setCurrentIndex(0);
-            //                     props.setCurrentLocation(props.QuestionPosition[0]);
-            //                 } else {
-            //                     props.setCurrentIndex(nextIndex);
-            //                     props.setCurrentLocation(props.QuestionPosition[nextIndex]);
-            //                 }
-                            
-            //                 return nextIndex;
-            //             }
-            //             return prevIndex;
-            //         });
-            //     }, 1000 * (i + 1));
-            // }
-
             props.setNumHeart(prevHearts => {
                 const newHearts = [...prevHearts];
                 const index = newHearts.indexOf(1);
@@ -99,9 +77,15 @@ function QBox(props) {
             props.setWinIsAlertOpen(true)
         }
 
-        setFeedback(isCorrect ? "Bạn đã trả lời chính xác" : "Rất tiếc gần đúng rồi");
+        setFeedback(isCorrect ? "Correct.png" : "Wrong.png");
 
-
+        if (isCorrect) {
+            const correctAudio = new Audio("/Correct_answer.mp3");
+            correctAudio.play().catch(error => console.log("Lỗi phát âm thanh: ", error));
+        } else {
+            const wrongAudio = new Audio("/Wrong_answer.mp3");
+            wrongAudio.play().catch(error => console.log("Lỗi phát âm thanh: ", error));
+        }
     }
 
     function returnPosition(input) {
@@ -122,7 +106,7 @@ function QBox(props) {
                                 props.setCurrentIndex(nextIndex);
                                 props.setCurrentLocation(props.QuestionPosition[nextIndex]);
                             }
-                            
+
                             return nextIndex;
                         }
                         return prevIndex;
@@ -130,13 +114,13 @@ function QBox(props) {
                 }, 1000 * (i + 1));
             }
 
-        setTimeout(() => {
+            setTimeout(() => {
+                props.setIsPlaying(false)
+            }, 1000 * (reversedSteps.length + 2));
+        } else {
             props.setIsPlaying(false)
-        }, 1000* (reversedSteps.length + 2));
-    } else {
-        props.setIsPlaying(false)
+        }
     }
-}
 
     function handleChange(event) {
         setAnswer(event.target.value)
@@ -145,7 +129,7 @@ function QBox(props) {
     const handleKeyDown = (e) => {
         if (!/[0-9]/.test(e.key) && e.key !== "Backspace") {
             e.preventDefault();
-          }
+        }
 
         if (e.key === "Enter") {
             if (isFirstEnter) {
@@ -153,9 +137,9 @@ function QBox(props) {
                 setIsFirstEnter(false); // Đánh dấu đã bấm lần đầu
             } else {
                 props.setIsQuesttionModalOpen(false),
-                returnPosition(answer),
-                setFeedback(""),
-                setAnswer()
+                    returnPosition(answer),
+                    setFeedback(""),
+                    setAnswer()
             }
         }
     };
@@ -220,20 +204,20 @@ function QBox(props) {
                         flexDirection: "column",
                         fontSize: 20,
                         height: "100%",
-                        
+
                     }}>
 
                     {/* <h1>Bạn phải trả lời câu hỏi sau</h1> */}
 
-                    <h1 style={{fontSize: 100, margin: 20}}>
+                    <h1 style={{ fontSize: 100, margin: 20 }}>
                         {sign ? num1 + " x " + num2 : num3 + " : " + num1}
-                        </h1>
+                    </h1>
 
                     <input
                         onChange={handleChange}
                         value={answer}
                         type="text"
-                        autoFocus = {true}
+                        autoFocus={true}
                         style={{
                             fontSize: "50px",
                             padding: "12px 15px",
@@ -279,7 +263,21 @@ function QBox(props) {
                     }
 
 
-                    {/* {feedback && <div>{feedback}</div>} */}
+                    {feedback && (
+                        <img
+                            src={feedback}
+                            alt="Feedback"
+                            style={{
+                                position: "fixed",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                width: "300px", // Có thể chỉnh kích thước theo ý muốn
+                                height: "auto",
+                                zIndex: 2000
+                            }}
+                        />
+                    )}
 
 
                     {feedback &&

@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import MainGame from './MainGame/MainGame.jsx';
 import StarterModal from './Explan/StarterModal.jsx';
+
+let bgMusic; // Giữ nhạc chạy liên tục
 
 function App() {
   useEffect(() => {
@@ -9,6 +11,22 @@ function App() {
     return () => {
       document.body.style.background = "";
     };
+  }, []);
+
+  useEffect(() => {
+    if (!bgMusic) {
+      bgMusic = new Audio("/theme_2.wav");
+      bgMusic.loop = true;
+      bgMusic.volume = 0.5;
+    }
+
+    const playMusic = () => {
+      bgMusic.play().catch(err => console.log("Không thể phát nhạc:", err));
+      document.removeEventListener("click", playMusic);
+    };
+
+    document.addEventListener("click", playMusic);
+    return () => document.removeEventListener("click", playMusic);
   }, []);
 
   return (

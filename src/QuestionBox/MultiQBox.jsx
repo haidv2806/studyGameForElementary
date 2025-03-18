@@ -80,10 +80,10 @@ function MultiQBox(props) {
                             isQuestionModalOpen={props.isQuestionModalOpen}
                         />}
                     
-                    {index == 0 && <img src="/treasure.png" alt="" width={150} />}
-                    {index == 12 && <img src="/karaken.png" alt="" width={130} />}
-                    {index == 22 && <img src="/island.png" alt="" width={150} />}
-                    {index == 42 && <img src="/private.png" alt="" width={150} />}
+                    {index == 0 && <img src="./treasure.png" alt="" width={150} />}
+                    {index == 12 && <img src="./karaken.png" alt="" width={130} />}
+                    {index == 22 && <img src="./island.png" alt="" width={150} />}
+                    {index == 42 && <img src="./private.png" alt="" width={150} />}
                 </div>
             ))}
         </div>

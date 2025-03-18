@@ -80,10 +80,10 @@ function QBox(props) {
         setFeedback(isCorrect ? "Correct.png" : "Wrong.png");
 
         if (isCorrect) {
-            const correctAudio = new Audio("/Correct_answer.mp3");
+            const correctAudio = new Audio("./Correct_answer.mp3");
             correctAudio.play().catch(error => console.log("Lỗi phát âm thanh: ", error));
         } else {
-            const wrongAudio = new Audio("/Wrong_answer.mp3");
+            const wrongAudio = new Audio("./Wrong_answer.mp3");
             wrongAudio.play().catch(error => console.log("Lỗi phát âm thanh: ", error));
         }
     }
@@ -165,7 +165,7 @@ function QBox(props) {
                         : `translate(0px, ${y}px)`
             }}>
             {props.shotCutStartPosition.includes(props.index) ?
-                <img src="/triangle.png" alt="" width={23} />
+                <img src="./triangle.png" alt="" width={23} />
                 :
                 sign ? num1 + " x " + num2 : num3 + " : " + num1
             }
@@ -188,7 +188,7 @@ function QBox(props) {
                         background: "rgba(255, 255, 255, 0)",
                         borderRadius: "10px",
                         border: "none",
-                        backgroundImage: "url('/leatherette_1.png')", // Đường dẫn ảnh nền
+                        backgroundImage: "url('./leatherette_1.png')", // Đường dẫn ảnh nền
                         backgroundSize: "80vw auto",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",

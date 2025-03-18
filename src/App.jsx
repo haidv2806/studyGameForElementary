@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     if (!bgMusic) {
-      bgMusic = new Audio("/theme_2.wav");
+      bgMusic = new Audio("./theme_2.wav");
       bgMusic.loop = true;
       bgMusic.volume = 0.5;
     }
@@ -38,7 +38,7 @@ function App() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: "url('/map.png')",
+            backgroundImage: "url('./map.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: 0,

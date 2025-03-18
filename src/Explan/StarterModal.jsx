@@ -26,7 +26,7 @@ function starterModal(props) {
                         background: "rgba(255, 255, 255, 0)",
                         borderRadius: "10px",
                         border: "none",
-                        backgroundImage: "url('/leatherette_3.png')", // Đường dẫn ảnh nền
+                        backgroundImage: "url('./leatherette_3.png')", // Đường dẫn ảnh nền
                         backgroundSize: "cover", // Ảnh phủ toàn bộ modal
                         backgroundPosition: "center", // Căn giữa ảnh nền
                         // backgroundSize: "80vw auto",

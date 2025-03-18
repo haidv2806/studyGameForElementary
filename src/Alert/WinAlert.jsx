@@ -41,7 +41,7 @@ function WinAlert({ isOpen, onClose }) {
             }}
         >
             <img
-                src={"/" + imageSrc} // Đổi thành link ảnh bạn muốn
+                src={"./" + imageSrc} // Đổi thành link ảnh bạn muốn
                 alt="Chiến thắng"
                 style={{ width: "200px", marginBottom: "10px" }}
             />

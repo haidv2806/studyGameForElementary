@@ -8,7 +8,7 @@ function MovingPrivate({ listQusettionOffsetPosision, currentIndex, currentPlaye
 
     return (
         <motion.img
-            src="/private.png"
+            src="./private.png"
             alt="Moving Object"
             style={{ width: "70px", height: "70px", position: "absolute" }}
             animate={{

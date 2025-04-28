@@ -1,12 +1,34 @@
-# React + Vite
+# 🎮 Ứng dụng Web Game dành cho học sinh lớp 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 👨‍👩‍👧‍👦 Nhóm 6 - Công Nghệ Đa Phương Tiện
 
-Currently, two official plugins are available:
+### Thành viên:
+- Đỗ Văn Hải - 2022602812  
+- Hứa Thành Hữu - 2022603122  
+- Hà Minh Nghĩa - 2020603206  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ⚙️ Cài đặt và chạy dự án
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔧 Yêu cầu trước khi bắt đầu:
+- Cài đặt [Node.js](https://nodejs.org/) (phiên bản >= 14)
+- npm (thường đi kèm Node.js)
+
+---
+
+### 📥 Bước 1: Clone dự án từ GitHub
+```bash
+git clone https://github.com/haidv2806/studyGameForElementary.git
+cd studyGameForElementary
+```
+
+### 📥 Bước 2: cài đặt thư viện cần thiết
+```bash
+npm install
+```
+
+### 📥 Bước 3: chạy dự án
+```bash
+npm run dev
+```

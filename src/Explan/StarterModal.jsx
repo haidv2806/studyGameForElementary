@@ -76,7 +76,7 @@ function starterModal(props) {
                                 props.setIsHelpModalOpen(true)
                             }}
                         >
-                            Hướng dẫn
+                            Thông tin
                         </button>
                     </div>
                 </div>

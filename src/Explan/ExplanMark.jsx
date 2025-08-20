@@ -17,17 +17,17 @@ function ExplanMark(props) {
                 isOpen={isOpen}
                 onRequestClose={() => setIsOpen(false)}
                 style={{
-                    overlay: { 
-                        backgroundColor: "rgba(0, 0, 0, 0.2)", 
-                        backdropFilter: "blur(10px)", 
-                        zIndex: 1000 
+                    overlay: {
+                        backgroundColor: "rgba(0, 0, 0, 0.2)",
+                        backdropFilter: "blur(10px)",
+                        zIndex: 1000
                     },
-                    content: { 
-                        width: "60%", 
+                    content: {
+                        width: "60%",
                         // height: "fit-content", // Chiều cao vừa với nội dung
-                        margin: "auto", 
-                        padding: "20px", 
-                        background: "rgba(255, 255, 255, 0)", 
+                        margin: "auto",
+                        padding: "20px",
+                        background: "rgba(255, 255, 255, 0)",
                         borderRadius: "10px",
                         border: "none",
                         backgroundImage: "url('/leatherette_1.png')", // Đường dẫn ảnh nền
@@ -50,12 +50,19 @@ function ExplanMark(props) {
                         height: "100%"
                     }}>
                     <h1>Trò chơi hướng đến kho báu</h1>
-                    <h2>Cách chơi</h2>
+                    {/* <h2>Cách chơi</h2>
                     <ul style={{ padding: 20 }}>
                         <li><p>Chơi theo nhóm</p></li>
                         <li><p>Người chơi bắt đầu từ vị trí <b>xuất phát</b> khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm nhận được. Nếu đến hình <b>tam giác</b> thì đi tiếp tới ô theo đường mũi tên.</p></li>
                         <li><p>Nêu kết quả của phép tính tại ô đi đến, nếu sai kết quả thì phải quay về ô xuất phát trước đó.</p></li>
                         <li><p>Trò chơi kết thúc khi người chơi đến được <b>Kho báu</b></p></li>
+                    </ul> */}
+                    <h2>Nhóm thực hiện</h2>
+                    <ul style={{ padding: 20 }}>
+                        <li><p>Nhóm 6 - Công Nghệ Đa Phương Tiện</p></li>
+                        <li><p>Đỗ Văn Hải - 2022602812</p></li>
+                        <li><p>Hứa Thành Hữu - 2022603122</p></li>
+                        <li><p>Hà Minh Nghĩa - 2020603206</p></li>
                     </ul>
                     <button
                         onClick={() => setIsOpen(false)}

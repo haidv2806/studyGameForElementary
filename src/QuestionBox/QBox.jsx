@@ -292,7 +292,8 @@ function QBox(props) {
                                 fontSize: 20,
                                 padding: 10,
                                 borderRadius: 10,
-                                backgroundColor: "#8B5A2B"
+                                backgroundColor: "#8B5A2B",
+                                zIndex: 10000,
                             }}
                         >
                             Tiếp tục

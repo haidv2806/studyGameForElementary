@@ -44,15 +44,15 @@ function MultiQBox(props) {
         <div
             style={{
                 display: "grid",
-                gridTemplateColumns: `repeat(${boardColumns}, 100px)`,
-                gridTemplateRows: `repeat(${boardRows}, 100px)`,
+                gridTemplateColumns: `repeat(${boardColumns}, 7rem)`,
+                gridTemplateRows: `repeat(${boardRows}, 7rem)`,
             }}
         >
             {boardCells.map((_, index) => (
                 <div key={index}
                     style={{
-                        width: "100px",
-                        height: "100px",
+                        width: "7rem",
+                        height: "7rem",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",

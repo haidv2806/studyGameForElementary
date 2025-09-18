@@ -3,14 +3,13 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-
 function ExplanMark(props) {
     const { isModalOpen: isOpen, setIsModalOpen: setIsOpen } = props;
 
     return (
         <div>
             <button onClick={() => setIsOpen(true)}>
-                <img src="exclamation.png" alt="" width={50} />
+                <img src="exclamation.png" alt="" style={{ width: "3.125rem" }} />
             </button>
 
             <Modal
@@ -20,23 +19,23 @@ function ExplanMark(props) {
                     overlay: {
                         backgroundColor: "rgba(0, 0, 0, 0.2)",
                         backdropFilter: "blur(10px)",
-                        zIndex: 1000
+                        zIndex: 1000,
                     },
                     content: {
+                        // position: 'relative',
                         width: "60%",
-                        // height: "fit-content", // Chiều cao vừa với nội dung
                         margin: "auto",
-                        padding: "20px",
+                        marginRight: "30rem", // 600px
+                        padding: "1.25rem", // 20px
                         background: "rgba(255, 255, 255, 0)",
-                        borderRadius: "10px",
+                        borderRadius: "0.625rem", // 10px
                         border: "none",
-                        backgroundImage: "url('/leatherette_1.png')", // Đường dẫn ảnh nền
-                        // backgroundSize: "cover", // Ảnh phủ toàn bộ modal
-                        // backgroundPosition: "center", // Căn giữa ảnh nền
+                        backgroundImage: "url('/leatherette_1.png')",
                         backgroundSize: "80vw auto",
                         backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center calc(50% + 40px)",
-                    }
+                        backgroundPosition: "center calc(50% + 2.5rem)", // 40px
+                        overflow: "visible"
+                    },
                 }}
             >
                 <div
@@ -46,39 +45,56 @@ function ExplanMark(props) {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        fontSize: 20,
-                        height: "100%"
-                    }}>
-                    <h1>Trò chơi hướng đến kho báu</h1>
-                    {/* <h2>Cách chơi</h2>
-                    <ul style={{ padding: 20 }}>
-                        <li><p>Chơi theo nhóm</p></li>
-                        <li><p>Người chơi bắt đầu từ vị trí <b>xuất phát</b> khi đến lượt, người chơi gieo xúc xắc. Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm nhận được. Nếu đến hình <b>tam giác</b> thì đi tiếp tới ô theo đường mũi tên.</p></li>
-                        <li><p>Nêu kết quả của phép tính tại ô đi đến, nếu sai kết quả thì phải quay về ô xuất phát trước đó.</p></li>
-                        <li><p>Trò chơi kết thúc khi người chơi đến được <b>Kho báu</b></p></li>
-                    </ul> */}
-                    <h2>Nhóm thực hiện</h2>
-                    <ul style={{ padding: 20 }}>
-                        <li><p>Nhóm 6 - Công Nghệ Đa Phương Tiện</p></li>
-                        <li><p>Đỗ Văn Hải - 2022602812</p></li>
-                        <li><p>Hứa Thành Hữu - 2022603122</p></li>
-                        <li><p>Hà Minh Nghĩa - 2020603206</p></li>
+                        fontSize: "1.25rem", // 20px
+                        height: "100%",
+                    }}
+                >
+                    <h1>TRUY TÌM KHO BÁU</h1>
+                    <h2>Cách chơi</h2>
+                    <ul style={{ padding: "1.25rem" /* 20px */ }}>
+                        <li>
+                            <p>
+                                Bắt đầu từ vị trí <b>xuất phát</b>, bạn gieo xúc xắc.
+                                Đếm số chấm ở mặt trên xúc xắc rồi di chuyển số ô bằng số chấm nhận được.
+                                Nếu đến hình <b>tam giác</b> thì đi tiếp tới ô theo đường mũi tên.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Nêu kết quả của phép tính tại ô bạn đi đến, nếu sai kết quả thì phải quay về ô xuất phát trước đó.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Trò chơi kết thúc khi bạn đến được <b>KHO BÁU</b>.
+                            </p>
+                        </li>
                     </ul>
                     <button
                         onClick={() => setIsOpen(false)}
                         style={{
-                            fontSize: 20,
-                            padding: 10,
-                            borderRadius: 10,
-                            backgroundColor: "#8B5A2B"
+                            fontSize: "1.25rem", // 20px
+                            padding: "0.625rem", // 10px
+                            borderRadius: "0.625rem", // 10px
+                            backgroundColor: "#8B5A2B",
                         }}
                     >
                         Đóng
                     </button>
+
+                    <img
+                        src={"/robot/speck.gif"}
+                        alt="Cảm ơn đã chơi"
+                        style={{
+                            position: "absolute",
+                            width: "80rem",     // 1000px
+                            marginLeft: "85rem" // 1450px
+                        }}
+                    />
                 </div>
             </Modal>
         </div>
     );
 }
 
-export default ExplanMark
+export default ExplanMark;

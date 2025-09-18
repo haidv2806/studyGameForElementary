@@ -3,8 +3,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-
-function starterModal(props) {
+function StarterModal(props) {
     const [isOpen, setIsOpen] = useState(true);
 
     return (
@@ -16,23 +15,20 @@ function starterModal(props) {
                     overlay: {
                         backgroundColor: "rgba(0, 0, 0, 0.2)",
                         backdropFilter: "blur(10px)",
-                        zIndex: 1000
+                        zIndex: 1000,
                     },
                     content: {
                         width: "60%",
-                        height: "60%", // Chiều cao vừa với nội dung
+                        height: "60%",
                         margin: "auto",
-                        padding: "20px",
+                        padding: "1.25rem", // 20px
                         background: "rgba(255, 255, 255, 0)",
-                        borderRadius: "10px",
+                        borderRadius: "0.625rem", // 10px
                         border: "none",
-                        backgroundImage: "url('/leatherette_3.png')", // Đường dẫn ảnh nền
-                        backgroundSize: "cover", // Ảnh phủ toàn bộ modal
-                        backgroundPosition: "center", // Căn giữa ảnh nền
-                        // backgroundSize: "80vw auto",
-                        // backgroundRepeat: "no-repeat",
-                        // backgroundPosition: "center calc(50% + 40px)",
-                    }
+                        backgroundImage: "url('/leatherette_3.png')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    },
                 }}
             >
                 <div
@@ -42,41 +38,45 @@ function starterModal(props) {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        fontSize: 30,
+                        fontSize: "1.875rem", // 30px
                         height: "100%",
-                        gap: "40px" // Thêm khoảng cách giữa các phần tử
-                    }}>
+                        gap: "2.5rem", // 40px
+                    }}
+                >
                     <h1>Trò chơi</h1>
-                    <h1>HƯỚNG ĐẾN KHO BÁU</h1>
+                    <h1>TRUY TÌM KHO BÁU</h1>
 
-                    <div style={{ display: "flex", gap: "50px" }}>
+                    <div style={{ display: "flex", gap: "3.125rem" /* 50px */ }}>
                         <button
                             style={{
                                 backgroundColor: "#8B5A2B",
-                                color: "white", fontSize: "20px",
-                                padding: "10px 20px", border: "none",
-                                borderRadius: "5px", cursor: "pointer",
+                                color: "white",
+                                fontSize: "1.25rem", // 20px
+                                padding: "0.625rem 1.25rem", // 10px 20px
+                                border: "none",
+                                borderRadius: "0.3125rem", // 5px
+                                cursor: "pointer",
                             }}
                             onClick={() => setIsOpen(false)}
                         >
-                            Bắt đầu
+                            Vào chơi
                         </button>
                         <button
                             style={{
                                 backgroundColor: "#8B5A2B",
                                 color: "white",
-                                fontSize: "20px",
-                                padding: "10px 20px",
+                                fontSize: "1.25rem", // 20px
+                                padding: "0.625rem 1.25rem", // 10px 20px
                                 border: "none",
-                                borderRadius: "5px",
-                                cursor: "pointer"
+                                borderRadius: "0.3125rem", // 5px
+                                cursor: "pointer",
                             }}
-                            onClick={()=>{
-                                setIsOpen(false),
-                                props.setIsHelpModalOpen(true)
+                            onClick={() => {
+                                setIsOpen(false);
+                                props.setIsHelpModalOpen(true);
                             }}
                         >
-                            Thông tin
+                            Luật chơi
                         </button>
                     </div>
                 </div>
@@ -85,4 +85,4 @@ function starterModal(props) {
     );
 }
 
-export default starterModal
+export default StarterModal;

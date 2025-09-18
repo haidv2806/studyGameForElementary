@@ -4,10 +4,10 @@ function WinAlert({ isOpen, onClose }) {
 
     const random = Math.floor(Math.random() * 3) + 1;
     let imageSrc = "";
-    
+
     switch (random) {
         case 1:
-            imageSrc = "pie.png";
+            imageSrc = "Pie.png";
             break;
         case 2:
             imageSrc = "ChupaChups.png";
@@ -29,7 +29,7 @@ function WinAlert({ isOpen, onClose }) {
                     zIndex: 2000
                 },
                 content: {
-                    width: "300px",
+                    width: "65%",
                     height: "fit-content",
                     margin: "auto",
                     padding: "20px",
@@ -43,14 +43,17 @@ function WinAlert({ isOpen, onClose }) {
             <img
                 src={"/" + imageSrc} // Đổi thành link ảnh bạn muốn
                 alt="Chiến thắng"
-                style={{ width: "200px", marginBottom: "10px" }}
+                style={{ width: "400px", marginBottom: "10px" }}
             />
-            <h2>Bạn đã Chiến thắng, phần thưởng của bạn là</h2>
+            <h2 style={{ fontSize: "2rem", marginBottom: "15px" }}>
+                🎉 Tuyệt vời! Chúc mừng bạn đã tìm ra kho báu 🎉
+            </h2>
             <button
                 onClick={() => window.location.reload()}
                 style={{
                     marginTop: "10px",
                     padding: "10px 20px",
+                    fontSize: "1.2rem",
                     background: "#007BFF",
                     color: "white",
                     border: "none",
@@ -58,7 +61,7 @@ function WinAlert({ isOpen, onClose }) {
                     cursor: "pointer"
                 }}
             >
-                Đồng ý
+                Nhận quà
             </button>
         </Modal>
     );

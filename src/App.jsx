@@ -17,7 +17,7 @@ function App() {
     if (!bgMusic) {
       bgMusic = new Audio("/theme_2.wav");
       bgMusic.loop = true;
-      bgMusic.volume = 0.5;
+      bgMusic.volume = 0.05;
     }
 
     const playMusic = () => {

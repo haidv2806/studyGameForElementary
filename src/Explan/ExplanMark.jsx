@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -6,6 +6,14 @@ Modal.setAppElement("#root");
 function ExplanMark(props) {
     const { isModalOpen: isOpen, setIsModalOpen: setIsOpen } = props;
 
+        useEffect(() => {
+        if (isOpen) {
+            const ExplanAudio = new Audio("/audio/explant.mp3");
+            ExplanAudio.play().catch(error => console.log("Lỗi phát âm thanh: ", error));
+        }
+
+    }, [isOpen]);
+    
     return (
         <div>
             <button onClick={() => setIsOpen(true)}>
@@ -88,7 +96,8 @@ function ExplanMark(props) {
                         style={{
                             position: "absolute",
                             width: "80rem",     // 1000px
-                            marginLeft: "85rem" // 1450px
+                            marginLeft: "85rem", // 1450px
+                            zIndex: -1
                         }}
                     />
                 </div>

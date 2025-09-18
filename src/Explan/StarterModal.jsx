@@ -21,6 +21,7 @@ function StarterModal(props) {
                         width: "60%",
                         height: "60%",
                         margin: "auto",
+                        marginRight: "30rem",
                         padding: "1.25rem", // 20px
                         background: "rgba(255, 255, 255, 0)",
                         borderRadius: "0.625rem", // 10px
@@ -28,6 +29,7 @@ function StarterModal(props) {
                         backgroundImage: "url('/leatherette_3.png')",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
+                        overflow: "visible"
                     },
                 }}
             >
@@ -79,6 +81,18 @@ function StarterModal(props) {
                             Luật chơi
                         </button>
                     </div>
+
+                    <img
+                        src={"/robot/waved.gif"}
+                        alt="Cảm ơn đã chơi"
+                        style={{
+                            position: "absolute",
+                            width: "80rem",     // 1000px
+                            marginLeft: "85rem", // 1450px
+                            zIndex: -1
+                        }}
+                    />
+
                 </div>
             </Modal>
         </div>

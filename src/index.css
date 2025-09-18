@@ -8,16 +8,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
 
 /* Nếu có font từ DaFont, tải về và thêm như sau */
-@font-face {
-  font-family: 'TreasureMap';
-  src: url('/fonts/TreasureMapDeadhand.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'CF Black Pearl';
-  src: url('/fonts/CFBlackPearl.ttf') format('truetype');
-}
-
 /* const fonts = [
   "'Pirata One', cursive",
   "'Windlass', cursive",

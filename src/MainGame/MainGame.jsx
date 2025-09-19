@@ -14,7 +14,7 @@ import StarterModal from "../Explan/StarterModal";
 function MainGame() {
     const boardPositions = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
     const [currentPlayerPosition, setCurrentPlayerPosition] = useState(boardPositions[0])
-    const [currentIndex, setCurrentIndex] = useState(28) 
+    const [currentIndex, setCurrentIndex] = useState(0) 
     const [diceValue, setDiceValue] = useState(0)
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
     const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)

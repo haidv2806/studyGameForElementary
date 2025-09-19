@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -6,14 +6,33 @@ Modal.setAppElement("#root");
 function ExplanMark(props) {
     const { isModalOpen: isOpen, setIsModalOpen: setIsOpen } = props;
 
-        useEffect(() => {
-        if (isOpen) {
-            const ExplanAudio = new Audio("/audio/explant.mp3");
-            ExplanAudio.play().catch(error => console.log("Lỗi phát âm thanh: ", error));
-        }
+    const audioRef = useRef(null);
 
+    useEffect(() => {
+        // Khởi tạo audio chỉ 1 lần
+        audioRef.current = new Audio("/audio/explant.mp3");
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current = null;
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!audioRef.current) return;
+
+        if (isOpen) {
+            audioRef.current.currentTime = 0; // luôn phát từ đầu
+            audioRef.current.play().catch(err => {
+                console.log("Không thể phát âm thanh:", err);
+            });
+        } else {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0; // reset về 0 nếu muốn tắt hẳn
+        }
     }, [isOpen]);
-    
+
     return (
         <div>
             <button onClick={() => setIsOpen(true)}>

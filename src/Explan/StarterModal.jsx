@@ -1,10 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
 function StarterModal(props) {
     const [isOpen, setIsOpen] = useState(true);
+
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Chỉ tạo 1 lần
+    audioRef.current = new Audio("/audio/welcome.mp3");
+
+    const playIntro = () => {
+      audioRef.current?.play().catch(err =>
+        console.log("Không thể phát âm thanh:", err)
+      );
+      document.removeEventListener("click", playIntro);
+    };
+
+    document.addEventListener("click", playIntro);
+
+    return () => document.removeEventListener("click", playIntro);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0; // reset về đầu nếu cần
+    }
+  }, [isOpen]);
+
 
     return (
         <div>

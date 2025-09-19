@@ -1,6 +1,33 @@
+import { useEffect, useRef } from "react";
 import Modal from "react-modal";
 
 function WinAlert({ isOpen, onClose }) {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Khởi tạo audio chỉ 1 lần
+    audioRef.current = new Audio("/audio/win.mp3");
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (isOpen) {
+      audioRef.current.currentTime = 0; // luôn phát từ đầu
+      audioRef.current.play().catch(err => {
+        console.log("Không thể phát âm thanh:", err);
+      });
+    } else {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0; // reset về 0 nếu muốn tắt hẳn
+    }
+  }, [isOpen]);
 
     const random = Math.floor(Math.random() * 3) + 1;
     let imageSrc = "";

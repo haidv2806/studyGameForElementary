@@ -47,7 +47,7 @@ function StarterModal(props) {
                         width: "60%",
                         height: "60%",
                         margin: "auto",
-                        marginRight: "30rem",
+                        marginRight: "35%",
                         padding: "1.25rem", // 20px
                         background: "rgba(255, 255, 255, 0)",
                         borderRadius: "0.625rem", // 10px

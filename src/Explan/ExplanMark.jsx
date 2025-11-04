@@ -52,7 +52,7 @@ function ExplanMark(props) {
                         // position: 'relative',
                         width: "60%",
                         margin: "auto",
-                        marginRight: "30rem", // 600px
+                        marginRight: "35%", // 600px
                         padding: "1.25rem", // 20px
                         background: "rgba(255, 255, 255, 0)",
                         borderRadius: "0.625rem", // 10px
@@ -72,7 +72,7 @@ function ExplanMark(props) {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        fontSize: "1.25rem", // 20px
+                        fontSize: "clamp(0.875rem, 1.2vw, 1.5rem)",
                         height: "100%",
                     }}
                 >
@@ -100,7 +100,7 @@ function ExplanMark(props) {
                     <button
                         onClick={() => setIsOpen(false)}
                         style={{
-                            fontSize: "1.25rem", // 20px
+                            fontSize: "clamp(1rem, 1.5vw, 2.5rem)",
                             padding: "0.625rem", // 10px
                             borderRadius: "0.625rem", // 10px
                             backgroundColor: "#8B5A2B",

@@ -114,7 +114,7 @@ function StarterModal(props) {
                         style={{
                             position: "absolute",
                             width: "80rem",     // 1000px
-                            marginLeft: "85rem", // 1450px
+                            marginLeft: "160%", // 1450px
                             zIndex: -1
                         }}
                     />

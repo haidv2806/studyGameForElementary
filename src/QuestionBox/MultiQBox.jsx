@@ -44,15 +44,15 @@ function MultiQBox(props) {
         <div
             style={{
                 display: "grid",
-                gridTemplateColumns: `repeat(${boardColumns}, 7rem)`,
-                gridTemplateRows: `repeat(${boardRows}, 7rem)`,
+                gridTemplateColumns: `repeat(${boardColumns}, 14vmin)`,
+                gridTemplateRows: `repeat(${boardRows}, 14vmin)`,
             }}
         >
             {boardCells.map((_, index) => (
                 <div key={index}
                     style={{
-                        width: "7rem",
-                        height: "7rem",
+                        width: "14vmin",
+                        height: "14vmin",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -79,11 +79,11 @@ function MultiQBox(props) {
                             shotCutStartPosition={props.shotCutStartPosition}
                             isQuestionModalOpen={props.isQuestionModalOpen}
                         />}
-                    
-                    {index == 0 && <img src="/treasure.png" alt="" width={150} />}
-                    {index == 12 && <img src="/karaken.png" alt="" width={130} />}
-                    {index == 22 && <img src="/island.png" alt="" width={150} />}
-                    {index == 42 && <img src="/private.png" alt="" width={150} />}
+
+                    {index == 0 && <img src="/treasure.png" alt="" width="100%" />}
+                    {index == 12 && <img src="/karaken.png" alt="" width="100%" />}
+                    {index == 22 && <img src="/island.png" alt="" width="100%" />}
+                    {index == 42 && <img src="/private.png" alt="" width="100%" />}
                 </div>
             ))}
         </div>

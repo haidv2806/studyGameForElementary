@@ -209,7 +209,7 @@ function QBox(props) {
 
                     {/* <h1>Bạn phải trả lời câu hỏi sau</h1> */}
 
-                    <h1 style={{ fontSize: 100, margin: 20 }}>
+                    <h1 style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", margin: 20 }}>
                         {sign ? num1 + " x " + num2 : num3 + " : " + num1}
                     </h1>
 
@@ -219,9 +219,9 @@ function QBox(props) {
                         type="text"
                         autoFocus={true}
                         style={{
-                            fontSize: "50px",
+                            fontSize: "clamp(1.5rem, 6vw, 3rem)",
                             padding: "12px 15px",
-                            width: "auto",
+                            width: "80%",
                             maxWidth: "300px",
                             minWidth: "10px",
                             // border: "2px solid rgba(200, 200, 200, 0.5)", // Màu viền nhẹ

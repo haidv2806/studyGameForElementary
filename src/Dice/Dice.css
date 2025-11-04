@@ -10,22 +10,23 @@
     box-sizing: border-box;
 }
 
-/* body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #b33951;
-} */
-
 .container {
     display: grid;
     place-items: center;
-    width: 250px;
-    padding: 60px 0 40px;
-    border-radius: 30px;
+    
+    /* * Đây là đơn vị cơ sở. 1em bây giờ = 10px.
+     * Muốn cả khối xúc xắc nhỏ lại, chỉ cần giảm số này (ví dụ: 8px)
+     */
+    font-size: 10px;
+
+    width: 25em; /* 250px -> 25em */
+    /* Đảm bảo nó không bao giờ lớn hơn chiều rộng màn hình */
+    max-width: 100%; 
+    
+    padding: 6em 0 4em; /* 60px 0 40px -> 6em 0 4em */
+    border-radius: 3em; /* 30px -> 3em */
     /* background: #eeeeee; */
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2em rgba(0, 0, 0, .1); /* 20px -> 2em */
 }
 
 /*
@@ -34,8 +35,8 @@
 
 .dice {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 10em;  /* 100px -> 10em */
+    height: 10em; /* 100px -> 10em */
     transform-style: preserve-3d;
     transition: 1s ease;
     /* animation: rolling 4s; */
@@ -51,8 +52,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
-    border: 5px solid #f6f3f0;
+    border-radius: 2em; /* 20px -> 2em */
+    border: 0.5em solid #f6f3f0; /* 5px -> 0.5em */
     transform-style: preserve-3d;
     background: linear-gradient(
         145deg, #dddbd8, #fff
@@ -64,9 +65,9 @@
     content: '';
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 2em; /* 20px -> 2em */
     background: #f6f3f0;
-    transform: translateZ(-1px);
+    transform: translateZ(-0.1em); /* -1px -> -0.1em */
 }
 
 .face::after {
@@ -74,76 +75,76 @@
     content: '';
     top: 50%;
     left: 50%;
-    width: 18px;
-    height: 18px;
+    width: 1.8em;  /* 18px -> 1.8em */
+    height: 1.8em; /* 18px -> 1.8em */
     border-radius: 50%;
     background: #131210;
 }
 
 .front {
-    transform: translateZ(50px);
+    transform: translateZ(5em); /* 50px -> 5em */
 }
 
 .back {
-    transform: rotateX(180deg) translateZ(50px);
+    transform: rotateX(180deg) translateZ(5em); /* 50px -> 5em */
 }
 
 .top {
-    transform: rotateX(90deg) translateZ(50px);
+    transform: rotateX(90deg) translateZ(5em); /* 50px -> 5em */
 }
 
 .bottom {
-    transform: rotateX(-90deg) translateZ(50px);
+    transform: rotateX(-90deg) translateZ(5em); /* 50px -> 5em */
 }
 
 .right {
-    transform: rotateY(90deg) translateZ(50px);
+    transform: rotateY(90deg) translateZ(5em); /* 50px -> 5em */
 }
 
 .left {
-    transform: rotateY(-90deg) translateZ(50px);
+    transform: rotateY(-90deg) translateZ(5em); /* 50px -> 5em */
 }
 
 .front::after {
-    width: 30px;
-    height: 30px;
+    width: 3em;  /* 30px -> 3em */
+    height: 3em; /* 30px -> 3em */
     background: #f63330;
-    margin: -15px 0 0 -15px;
+    margin: -1.5em 0 0 -1.5em; /* -15px -> -1.5em */
 }
 
 .back::after {
-    margin: -35px 0 0 -30px;
-    box-shadow: 40px 0,
-                0 25px,
-                40px 25px,
-                0 50px,
-                40px 50px;
+    margin: -3.5em 0 0 -3em; /* -35px, -30px -> -3.5em, -3em */
+    box-shadow: 4em 0,     /* 40px -> 4em */
+                0 2.5em,   /* 25px -> 2.5em */
+                4em 2.5em,
+                0 5em,     /* 50px -> 5em */
+                4em 5em;
 }
 
 .top::after {
-    margin: -30px 0 0 -30px;
-    box-shadow: 40px 40px;
+    margin: -3em 0 0 -3em; /* -30px -> -3em */
+    box-shadow: 4em 4em;   /* 40px -> 4em */
 }
 
 .bottom::after {
-    margin: -36px 0 0 -36px;
-    box-shadow: 26px 26px,
-                52px 52px,
-                52px 0,
-                0 52px;
+    margin: -3.6em 0 0 -3.6em; /* -36px -> -3.6em */
+    box-shadow: 2.6em 2.6em,   /* 26px -> 2.6em */
+                5.2em 5.2em,   /* 52px -> 5.2em */
+                5.2em 0,
+                0 5.2em;
 }
 
 .right::after {
-    margin: -30px 0 0 -30px;
-    box-shadow: 40px 0,
-    0 40px,
-    40px 40px;
+    margin: -3em 0 0 -3em; /* -30px -> -3em */
+    box-shadow: 4em 0,   /* 40px -> 4em */
+    0 4em,
+    4em 4em;
 }
 
 .left::after {
-    margin: -35px 0 0 -35px;
-    box-shadow: 25px 25px,
-                50px 50px;
+    margin: -3.5em 0 0 -3.5em; /* -35px -> -3.5em */
+    box-shadow: 2.5em 2.5em,   /* 25px -> 2.5em */
+                5em 5em;       /* 50px -> 5em */
 }
 
 /*
@@ -153,15 +154,35 @@
 .roll {
     cursor: pointer;
     color: #b33951;
-    margin-top: 60px;
-    padding: 6px 12px;
-    border-radius: 3px;
-    font: 700 16px 'Montserrat';
-    border: 2px solid #b33951;
+    margin-top: 6em;     /* 60px -> 6em */
+    padding: 0.6em 1.2em;  /* 6px 12px -> 0.6em 1.2em */
+    border-radius: 0.3em; /* 3px -> 0.3em */
+    font: 700 1.6em 'Montserrat'; /* 16px -> 1.6em */
+    border: 0.2em solid #b33951; /* 2px -> 0.2em */
     transition: .4s;
 }
 
 .roll:hover {
     color: #fff;
     background: #b33951;
+}
+
+/* * Đây là ví dụ về responsive:
+ * Khi màn hình rộng dưới 768px (máy tính bảng)...
+ */
+@media (max-width: 768px) {
+    .container {
+        /* ...chúng ta giảm font-size cơ sở xuống còn 8px */
+        font-size: 8px;
+        /* Mọi thứ khác dùng 'em' sẽ tự động co nhỏ theo! */
+    }
+}
+
+/* * Khi màn hình rộng dưới 480px (điện thoại)...
+ */
+@media (max-width: 480px) {
+    .container {
+        /* ...giảm xuống 7px */
+        font-size: 7px;
+    }
 }

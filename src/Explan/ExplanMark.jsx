@@ -116,7 +116,7 @@ function ExplanMark(props) {
                             position: "absolute",
                             width: "80rem",     // 1000px
                             marginLeft: "85rem", // 1450px
-                            zIndex: -1
+                            zIndex: 1
                         }}
                     />
                 </div>

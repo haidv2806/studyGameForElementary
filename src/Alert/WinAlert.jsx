@@ -70,7 +70,7 @@ function WinAlert({ isOpen, onClose }) {
             <img
                 src={"/" + imageSrc} // Đổi thành link ảnh bạn muốn
                 alt="Chiến thắng"
-                style={{ width: "400px", marginBottom: "10px" }}
+                style={{ width: "100%", maxWidth: "400px", marginBottom: "10px" }}
             />
             <h2 style={{ fontSize: "2rem", marginBottom: "15px" }}>
                 🎉 Tuyệt vời! Chúc mừng bạn đã tìm ra kho báu 🎉

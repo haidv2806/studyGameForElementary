@@ -66,9 +66,9 @@ function StarterModal(props) {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        fontSize: "1.875rem", // 30px
+                        fontSize: "clamp(1.25rem, 2vw, 2.25rem)",
                         height: "100%",
-                        gap: "2.5rem", // 40px
+                        gap: "clamp(1rem, 2vh, 2rem)",
                     }}
                 >
                     <h1>Trò chơi</h1>
@@ -79,7 +79,7 @@ function StarterModal(props) {
                             style={{
                                 backgroundColor: "#8B5A2B",
                                 color: "white",
-                                fontSize: "1.25rem", // 20px
+                                fontSize: "clamp(1rem, 1.5vw, 2.5rem)",
                                 padding: "0.625rem 1.25rem", // 10px 20px
                                 border: "none",
                                 borderRadius: "0.3125rem", // 5px
@@ -93,7 +93,7 @@ function StarterModal(props) {
                             style={{
                                 backgroundColor: "#8B5A2B",
                                 color: "white",
-                                fontSize: "1.25rem", // 20px
+                                fontSize: "clamp(1rem, 1.5vw, 2.5rem)",
                                 padding: "0.625rem 1.25rem", // 10px 20px
                                 border: "none",
                                 borderRadius: "0.3125rem", // 5px

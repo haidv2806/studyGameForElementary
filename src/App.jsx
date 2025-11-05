@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import MainGame from './MainGame/MainGame.jsx';
-import StarterModal from './Explan/StarterModal.jsx';
-
 let bgMusic; // Giữ nhạc chạy liên tục
 
 function App() {
@@ -12,18 +10,6 @@ function App() {
       document.body.style.background = "";
     };
   }, []);
-
-  // useEffect(() => {
-  //   const ExplanAudio = new Audio("/audio/welcome.mp3");
-
-  //   const playIntro = () => {
-  //     ExplanAudio.play().catch(err => console.log("Không thể phát âm thanh:", err));
-  //     document.removeEventListener("click", playIntro);
-  //   };
-
-  //   document.addEventListener("click", playIntro);
-  //   return () => document.removeEventListener("click", playIntro);
-  // }, []);
 
   useEffect(() => {
     if (!bgMusic) {

@@ -9,12 +9,15 @@ import MovingPrivate from "../Animation/MovingPrivate";
 import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
 import LossAlert from "../Alert/LossAlert";
 import WinAlert from "../Alert/WinAlert";
-import StarterModal from "../Explan/StarterModal";
-
+import WinModal from "../Alert/WinModal";
+// import StarterModal from "../Explan/StarterModal";
+import OpeningModal from "../Explan/OpeningModal";
+import ExplanModal from "../Explan/ExplanModal";
+import VideoModal from "../Explan/VideoModal";
 function MainGame() {
     const boardPositions = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
     const [currentPlayerPosition, setCurrentPlayerPosition] = useState(boardPositions[0])
-    const [currentIndex, setCurrentIndex] = useState(0) 
+    const [currentIndex, setCurrentIndex] = useState(0)
     const [diceValue, setDiceValue] = useState(0)
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
     const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false)
@@ -95,8 +98,10 @@ function MainGame() {
 
 
                 <div style={{ alignSelf: "flex-start" }}>
-                    <ExplanMark isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />
-                    <StarterModal setIsHelpModalOpen={setIsHelpModalOpen} />
+                    <ExplanModal isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />
+                    {/* <StarterModal setIsHelpModalOpen={setIsHelpModalOpen} /> */}
+                    <OpeningModal />
+                    {/* <OpeningVideo fileId={"1ZqHsiObJaL6D3kaErk3pif8d4txrHT4l"}/> */}
                 </div>
             </div>
 
@@ -112,7 +117,7 @@ function MainGame() {
                     boardPositions={boardPositions}
                 />
                 <LossAlert isOpen={isLossAlertOpen} onClose={() => setLossIsAlertOpen(false)} />
-                <WinAlert isOpen={isWinAlertOpen} onClose={() => setWinIsAlertOpen(false)} />
+                <WinModal isOpen={isWinAlertOpen} onClose={() => setWinIsAlertOpen(false)} />
                 {[...Array(3)].map((_, i) => (
                     <SGVPathArrow
                         key={i}

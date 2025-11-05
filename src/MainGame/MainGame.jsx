@@ -10,7 +10,7 @@ import WaveAnimationSVG from "../Animation/WaveAnimationSVG";
 import LossAlert from "../Alert/LossAlert";
 import WinAlert from "../Alert/WinAlert";
 import WinModal from "../Alert/WinModal";
-// import StarterModal from "../Explan/StarterModal";
+import StarterModal from "../Explan/StarterModal";
 import OpeningModal from "../Explan/OpeningModal";
 import ExplanModal from "../Explan/ExplanModal";
 import VideoModal from "../Explan/VideoModal";
@@ -99,7 +99,7 @@ function MainGame() {
 
                 <div style={{ alignSelf: "flex-start" }}>
                     <ExplanModal isModalOpen={isHelpModalOpen} setIsModalOpen={setIsHelpModalOpen} />
-                    {/* <StarterModal setIsHelpModalOpen={setIsHelpModalOpen} /> */}
+                    <StarterModal setIsHelpModalOpen={setIsHelpModalOpen} />
                     <OpeningModal />
                     {/* <OpeningVideo fileId={"1ZqHsiObJaL6D3kaErk3pif8d4txrHT4l"}/> */}
                 </div>

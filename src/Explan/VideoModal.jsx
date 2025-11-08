@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -28,18 +28,6 @@ const customModalStyles = {
 };
 
 function VideoModal({ fileId, isOpen, onRequestClose, isShowBtn = false }) {
-  const [showButton, setShowButton] = useState(false); // hiện nút sau 10s
-
-  // HIỆN NÚT SAU 10 GIÂY
-  useEffect(() => {
-    if (isOpen && isShowBtn) {
-      const timer = setTimeout(() => {
-        setShowButton(true);
-      }, 1000 * 12); // 12 giây
-
-      return () => clearTimeout(timer); // dọn dẹp
-    }
-  }, [isOpen, isShowBtn]);
 
   const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`
   return (
@@ -89,15 +77,17 @@ function VideoModal({ fileId, isOpen, onRequestClose, isShowBtn = false }) {
       </button>
 
       {/* NÚT "TIẾP TỤC" – GIỮA MÀN HÌNH, SAU 10S */}
-      {isOpen && isShowBtn && showButton && (
+      {isOpen && isShowBtn && (
         <button
           onClick={onRequestClose}
           style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 1002,
+            position: "absolute",
+            top: "1rem",
+            right: "1.25rem",
+            zIndex: 1003,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             padding: "20px 50px",
             background: "#8B5A2B",
             color: "white",
@@ -109,14 +99,8 @@ function VideoModal({ fileId, isOpen, onRequestClose, isShowBtn = false }) {
             animation: "pulse 2s infinite",
             transition: "all 0.3s ease",
           }}
-          onMouseEnter={(e) => {
-            e.target.style.transform = "translate(-50%, -50%) scale(1.1)";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.transform = "translate(-50%, -50%) scale(1)";
-          }}
         >
-          TIẾP TỤC
+          Chơi lại
         </button>
       )}
 

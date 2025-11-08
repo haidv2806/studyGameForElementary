@@ -209,7 +209,7 @@ function QBox(props) {
 
                     {/* <h1>Bạn phải trả lời câu hỏi sau</h1> */}
 
-                    <h1 style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", margin: 20 }}>
+                    <h1 style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)" }}>
                         {sign ? num1 + " x " + num2 : num3 + " : " + num1}
                     </h1>
 
@@ -258,7 +258,7 @@ function QBox(props) {
                                 margin: 20
                             }}
                         >
-                            xác nhận
+                            giải mã
                         </button>
                     }
 

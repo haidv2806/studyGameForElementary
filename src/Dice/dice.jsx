@@ -106,7 +106,7 @@ function Dice(props) {
             </div>
 
             <button className="roll" onClick={() => !props.isPlaying && rollDiceAndMove()}>
-                Bắt đầu
+                Lắc
             </button>
         </div>
     );

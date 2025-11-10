@@ -111,12 +111,12 @@ function QBox(props) {
                         }
                         return prevIndex;
                     });
-                }, 1000 * (i + 1));
+                }, 700 * (i + 1));
             }
 
             setTimeout(() => {
                 props.setIsPlaying(false)
-            }, 1000 * (reversedSteps.length + 2));
+            }, 700 * (reversedSteps.length + 2));
         } else {
             props.setIsPlaying(false)
         }
@@ -154,7 +154,7 @@ function QBox(props) {
                 backgroundColor: props.index == props.currentLocation ? "green" : "white",
                 borderRadius: "50%",
                 border: "1px solid black",
-                fontSize: 17,
+                fontSize: "clamp(1rem, 2.4vw, 1.4rem)",
                 margin: 10,
                 display: "flex",
                 justifyContent: "center",
@@ -165,7 +165,7 @@ function QBox(props) {
                         : `translate(0px, ${y}px)`
             }}>
             {props.shotCutStartPosition.includes(props.index) ?
-                <img src="/triangle.png" alt="" width={23} />
+                <img src="/triangle.png" alt="" style={{ width: "1.7rem", transform: "rotateX(180deg)" }} />
                 :
                 sign ? num1 + " x " + num2 : num3 + " : " + num1
             }
@@ -202,13 +202,12 @@ function QBox(props) {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        fontSize: 20,
+                        // fontSize: 20,
                         height: "100%",
 
                     }}>
 
                     {/* <h1>Bạn phải trả lời câu hỏi sau</h1> */}
-
                     <h1 style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)" }}>
                         {sign ? num1 + " x " + num2 : num3 + " : " + num1}
                     </h1>
@@ -251,14 +250,14 @@ function QBox(props) {
                         <button
                             onClick={() => AnswerQuestion(answer)}
                             style={{
-                                fontSize: 20,
-                                padding: 10,
-                                borderRadius: 10,
+                                fontSize: "2rem",
+                                padding: "1rem",
+                                borderRadius: "1rem",
                                 backgroundColor: "#8B5A2B",
-                                margin: 20
+                                margin: "1rem"
                             }}
                         >
-                            giải mã
+                            GIẢI MÃ
                         </button>
                     }
 
@@ -289,14 +288,15 @@ function QBox(props) {
                                 setAnswer()
                             )}
                             style={{
-                                fontSize: 20,
-                                padding: 10,
-                                borderRadius: 10,
+                                fontSize: "2rem",
+                                padding: "1rem",
+                                borderRadius: "1rem",
                                 backgroundColor: "#8B5A2B",
+                                margin: "1rem",
                                 zIndex: 10000,
                             }}
                         >
-                            Tiếp tục
+                            TIẾP TỤC
                         </button>
                     }
 

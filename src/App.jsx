@@ -6,8 +6,15 @@ function App() {
   useEffect(() => {
     // Background màu xanh
     document.body.style.background = "rgba(0, 119, 255, 0.8)";
+
+    // Khóa scroll X và Y
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
     return () => {
       document.body.style.background = "";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, []);
 
@@ -28,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <div style={{ position: "relative", height: "100vh" }}>
+    <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
       <div
         style={{
           position: "fixed",
@@ -39,6 +46,7 @@ function App() {
           backgroundImage: "url('/map.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          opacity: 0.9,
           zIndex: 0,
         }}
       />

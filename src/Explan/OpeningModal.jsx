@@ -89,9 +89,10 @@ function OpeningModal() {
 
       {/* SỬA: Truyền hàm đóng, không gọi hàm */}
       <VideoModal
-        fileId="1ZqHsiObJaL6D3kaErk3pif8d4txrHT4l"
+        fileId="14UlJ4NqxNt5FXv6KorZYCVsS9Ge2Iku3"
         isOpen={videoModelOpen}
         onRequestClose={handleVideoClose}
+        buttonText={"TIẾP TỤC"}
       />
     </div>
   );

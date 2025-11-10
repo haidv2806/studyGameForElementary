@@ -44,7 +44,7 @@ function StarterModal(props) {
                         gap: "clamp(1rem, 2vh, 2rem)",
                     }}
                 >
-                    <h1>Trò chơi</h1>
+                    <h1>TRÒ CHƠI</h1>
                     <h1>TRUY TÌM KHO BÁU</h1>
 
                     <div style={{ display: "flex", gap: "3.125rem" /* 50px */ }}>
@@ -60,7 +60,7 @@ function StarterModal(props) {
                             }}
                             onClick={() => setIsOpen(false)}
                         >
-                            Vào chơi
+                            VÀO CHƠI
                         </button>
                         <button
                             style={{
@@ -77,7 +77,7 @@ function StarterModal(props) {
                                 props.setIsHelpModalOpen(true);
                             }}
                         >
-                            Luật chơi
+                            LUẬT CHƠI
                         </button>
                     </div>
                 </div>

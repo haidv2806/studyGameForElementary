@@ -20,8 +20,6 @@ function Dice(props) {
         console.log(props.currentIndex);
         console.log("===========");
         
-        
-        
         let currentIdx = props.currentIndex;
 
         for (let i = 1; i <= random; i++) {
@@ -45,15 +43,15 @@ function Dice(props) {
                             props.setStepNum(prev => [...prev, currentIdx])
                             setTimeout(() => {
                                 props.setIsQuesttionModalOpen(true);
-                            }, 1000);
-                        }, 1000);
+                            }, 700);
+                        }, 700);
                     } else {
                         setTimeout(() => {
                             props.setIsQuesttionModalOpen(true);
-                        }, 1000);
+                        }, 700);
                     }
                 }
-            }, 1000 * i);
+            }, 700 * i);
         }
     }
 
@@ -106,7 +104,7 @@ function Dice(props) {
             </div>
 
             <button className="roll" onClick={() => !props.isPlaying && rollDiceAndMove()}>
-                Lắc
+                LẮC
             </button>
         </div>
     );

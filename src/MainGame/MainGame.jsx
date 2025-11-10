@@ -13,10 +13,10 @@ import WinModal from "../Alert/WinModal";
 import StarterModal from "../Explan/StarterModal";
 import OpeningModal from "../Explan/OpeningModal";
 import ExplanModal from "../Explan/ExplanModal";
-import VideoModal from "../Explan/VideoModal";
+
 function MainGame() {
     const boardPositions = [42, 43, 44, 45, 46, 47, 48, 41, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 16, 17, 18, 19, 20, 13, 6, 5, 4, 3, 2, 1]
-    const [currentPlayerPosition, setCurrentPlayerPosition] = useState(boardPositions[0])
+    const [currentPlayerPosition, setCurrentPlayerPosition] = useState(boardPositions[-1])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [diceValue, setDiceValue] = useState(0)
     const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)

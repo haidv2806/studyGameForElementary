@@ -16,7 +16,7 @@ export default function WinModal({ isOpen, onClose }) {
                 fileId="17Zc4283q535c_zAazqnYx2Rc1-hrHp95"
                 isOpen={isOpen}
                 onRequestClose={handleFinalClose}
-                isShowBtn={true}
+                buttonText={"CHƠI LẠI"}
             />
         </>
     );
